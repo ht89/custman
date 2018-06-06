@@ -12,7 +12,7 @@ import { AdditionComponent } from './addition/addition.component';
 export class CustomersComponent implements OnInit {
     customers: Observable<any[]>;
 
-    columnsToDisplay = ['number', 'phoneNum', 'address'];
+    columnsToDisplay = ['number', 'name', 'phoneNum', 'address'];
 
     constructor(private db: AngularFirestore,
         private dialog: MatDialog) { }
