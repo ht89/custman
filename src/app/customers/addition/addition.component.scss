@@ -1,0 +1,13 @@
+@import '../../../assets/_variables.scss';
+
+.addition-wrapper {
+    .mat-form-field {
+        width: 100%;
+    }
+    .btns {
+        float: right;
+        &__cancel {
+            margin-right: $space5;
+        }
+    }
+}

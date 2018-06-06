@@ -1,3 +1,28 @@
-<p>
-  addition works!
-</p>
+<div class="addition-wrapper">
+    <h2 mat-dialog-title>Add customer</h2>
+
+    <mat-grid-list cols="2" rowHeight="100px" gutterSize="15px">
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field>
+                <input matInput placeholder="Name">
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field>
+                <input matInput placeholder="Phone Number">
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field>
+                <input matInput placeholder="Address">
+            </mat-form-field>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+    <div class="btns">
+        <button mat-raised-button class="btns__cancel" color="basic" mat-dialog-close>Cancel</button>
+        <button mat-raised-button class="btns__add" color="accent" (click)="add()">Add</button>
+    </div>
+</div>

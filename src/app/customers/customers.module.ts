@@ -6,13 +6,19 @@ import {MatTableModule} from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AdditionComponent } from './addition/addition.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
     imports: [
         CommonModule,
         MatTableModule,
         MatButtonModule,
-        MatDialogModule
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatGridListModule
     ],
     exports: [],
     declarations: [CustomersComponent, AdditionComponent],

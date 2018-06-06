@@ -22,7 +22,9 @@ export class CustomersComponent implements OnInit {
     }
 
     openAdditionDialog() {
-        const additionDialogRef = this.dialog.open(AdditionComponent, {});
+        const additionDialogRef = this.dialog.open(AdditionComponent, {
+            width: '500px'
+        });
 
         additionDialogRef.afterClosed().subscribe(result => {
             console.log('The addition dialog is closed');
