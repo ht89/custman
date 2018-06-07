@@ -18,9 +18,9 @@ export class ModificationComponent implements OnInit {
 
     ngOnInit() {
         this.modForm = this.fb.group({
-            name: [this.data['customer'].name, [Validators.pattern(/\D+/)]],
-            phoneNum: [this.data['customer'].phoneNum, [Validators.pattern(/\d+/)]],
-            address: [this.data['customer'].address, [Validators.pattern(/\D+/)]]
+            name: [this.data['customer'] ? this.data['customer'].name : '', [Validators.pattern(/\D+/)]],
+            phoneNum: [this.data['customer'] ? this.data['customer'].phoneNum : '', [Validators.pattern(/\d+/)]],
+            address: [this.data['customer'] ? this.data['customer'].address : '', [Validators.pattern(/\D+/)]]
         });
     }
 
