@@ -28,6 +28,4 @@ export class AdditionComponent implements OnInit {
     add() {
         this.dialogRef.close(this.model);
     }
-
-    get diagnostic() { return JSON.stringify(this.model); }
 }
