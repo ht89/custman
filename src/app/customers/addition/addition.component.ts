@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Customer } from '../customer.interface';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-addition',
@@ -8,24 +9,27 @@ import { Customer } from '../customer.interface';
     styleUrls: ['./addition.component.scss']
 })
 export class AdditionComponent implements OnInit {
+    additionForm: FormGroup;
     submitted = false;
-    model: Customer = {
-        id: null,
-        name: '',
-        phoneNum: null,
-        address: ''
-    };
 
-    constructor(private dialogRef: MatDialogRef<AdditionComponent>) { }
+    constructor(private dialogRef: MatDialogRef<AdditionComponent>,
+        private fb: FormBuilder) { }
 
     ngOnInit() {
+        this.additionForm = this.fb.group({
+            name: ['', [Validators.required]],
+            phoneNum: ['', [Validators.required]],
+            address: ['', [Validators.required]]
+        });
     }
 
     closeDialog() {
         this.dialogRef.close();
     }
 
-    add() {
-        this.dialogRef.close(this.model);
+    add(model: Customer, isValid: boolean) {
+        console.log(model, isValid);
+
+        this.dialogRef.close(model);
     }
 }

@@ -1,30 +1,30 @@
 <div class="addition-wrapper">
     <h2 mat-dialog-title>Add customer</h2>
 
-    <form #additionForm="ngForm" (ngSubmit)="add()">
+    <form [formGroup]="additionForm" novalidate (ngSubmit)="add(additionForm.value, additionForm.valid)">
         <mat-grid-list cols="2" rowHeight="100px" gutterSize="15px">
             <mat-grid-tile [colspan]="1" [rowspan]="1">
                 <mat-form-field>
-                    <input matInput placeholder="Name" [(ngModel)]="model.name" name="name" required>
+                    <input matInput placeholder="Name" type="text" formControlName="name">
                 </mat-form-field>
             </mat-grid-tile>
 
             <mat-grid-tile [colspan]="1" [rowspan]="1">
                 <mat-form-field>
-                    <input matInput placeholder="Phone Number" [(ngModel)]="model.phoneNum" name="phoneNum" required>
+                    <input matInput placeholder="Phone Number" type="number" formControlName="phoneNum">
                 </mat-form-field>
             </mat-grid-tile>
 
             <mat-grid-tile [colspan]="2" [rowspan]="1">
                 <mat-form-field>
-                    <input matInput placeholder="Address" [(ngModel)]="model.address" name="address" required>
+                    <input matInput placeholder="Address" type="text" formControlName="address">
                 </mat-form-field>
             </mat-grid-tile>
         </mat-grid-list>
 
         <div class="btns">
             <button mat-raised-button class="btns__cancel" color="basic" mat-dialog-close>Cancel</button>
-            <button mat-raised-button class="btns__add" color="accent" type="submit">Add</button>
+            <button mat-raised-button class="btns__add" color="accent" [disabled]="!additionForm.valid" type="submit">Add</button>
         </div>
     </form>
 </div>
