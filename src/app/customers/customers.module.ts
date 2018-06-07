@@ -9,10 +9,12 @@ import { AdditionComponent } from './addition/addition.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     imports: [
         CommonModule,
+        FormsModule,
         MatTableModule,
         MatButtonModule,
         MatDialogModule,

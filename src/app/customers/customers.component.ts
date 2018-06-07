@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/internal/Observable';
 import { MatDialog } from '@angular/material/dialog';
 import { AdditionComponent } from './addition/addition.component';
+import { Customer } from './customer.interface';
 
 @Component({
     selector: 'app-customers',
@@ -10,7 +11,8 @@ import { AdditionComponent } from './addition/addition.component';
     styleUrls: ['./customers.component.scss']
 })
 export class CustomersComponent implements OnInit {
-    customers: Observable<any[]>;
+    private customersCollection: AngularFirestoreCollection<Customer>;
+    customers: Observable<Customer[]>;
 
     columnsToDisplay = ['number', 'name', 'phoneNum', 'address'];
 
@@ -18,7 +20,8 @@ export class CustomersComponent implements OnInit {
         private dialog: MatDialog) { }
 
     ngOnInit() {
-        this.customers = this.db.collection('customers').valueChanges();
+        this.customersCollection = this.db.collection<Customer>('customers');
+        this.customers = this.customersCollection.valueChanges();
     }
 
     openAdditionDialog() {
@@ -27,8 +30,12 @@ export class CustomersComponent implements OnInit {
         });
 
         additionDialogRef.afterClosed().subscribe(result => {
-            console.log('The addition dialog is closed');
+            console.log('The addition dialog is closed', result);
+            this.addCustomer(result);
         });
     }
 
+    addCustomer(customer: Customer) {
+        this.customersCollection.add(customer);
+    }
 }
