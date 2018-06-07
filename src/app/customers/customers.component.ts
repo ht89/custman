@@ -31,7 +31,10 @@ export class CustomersComponent implements OnInit {
 
         additionDialogRef.afterClosed().subscribe(result => {
             console.log('The addition dialog is closed', result);
-            this.addCustomer(result);
+
+            if (result) {
+                this.addCustomer(result);
+            }
         });
     }
 
