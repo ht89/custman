@@ -16,6 +16,16 @@ import {MatButtonModule} from '@angular/material/button';
 import { ROUTES } from './app.routes';
 import { CustomersModule } from './customers/customers.module';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { FormControl, FormGroupDirective } from '@angular/forms';
+
+/** Error when invalid control is dirty, touched, or submitted. */
+class ShowOnDirtyErrorStateMatcher implements ErrorStateMatcher {
+    isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+        const isSubmitted = form && form.submitted;
+        return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+    }
+}
 
 @NgModule({
     declarations: [
@@ -36,7 +46,8 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
         CustomersModule
     ],
     providers: [
-        { provide: LocationStrategy, useClass: PathLocationStrategy }
+        { provide: LocationStrategy, useClass: PathLocationStrategy },
+        { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
     ],
     bootstrap: [AppComponent]
 })

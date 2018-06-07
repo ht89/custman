@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Customer } from '../customer.interface';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
     selector: 'app-addition',
@@ -10,7 +10,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class AdditionComponent implements OnInit {
     additionForm: FormGroup;
-    submitted = false;
+    matcher: any;
 
     constructor(private dialogRef: MatDialogRef<AdditionComponent>,
         private fb: FormBuilder) { }
@@ -18,7 +18,7 @@ export class AdditionComponent implements OnInit {
     ngOnInit() {
         this.additionForm = this.fb.group({
             name: ['', [Validators.pattern(/\D+/)]],
-            phoneNum: ['', [Validators.required]],
+            phoneNum: ['', [Validators.pattern(/\d+/)]],
             address: ['', [Validators.pattern(/\D+/)]]
         });
     }
