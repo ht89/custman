@@ -1,12 +1,12 @@
 <div class="addition-wrapper">
     <h2 mat-dialog-title>Add customer</h2>
 
-    <form [formGroup]="additionForm" novalidate (ngSubmit)="add(additionForm.value, additionForm.valid)">
+    <form [formGroup]="modForm" novalidate (ngSubmit)="save(modForm.value, modForm.valid)">
         <mat-grid-list cols="2" rowHeight="100px" gutterSize="15px">
             <mat-grid-tile [colspan]="1" [rowspan]="1">
                 <mat-form-field>
                     <input matInput placeholder="Name" formControlName="name">
-                    <mat-error *ngIf="additionForm.controls.name.invalid">
+                    <mat-error *ngIf="modForm.controls.name.invalid">
                         Name must be a string
                     </mat-error>
                 </mat-form-field>
@@ -15,7 +15,7 @@
             <mat-grid-tile [colspan]="1" [rowspan]="1">
                 <mat-form-field>
                     <input matInput placeholder="Phone Number" formControlName="phoneNum">
-                    <mat-error *ngIf="additionForm.controls.phoneNum.invalid">
+                    <mat-error *ngIf="modForm.controls.phoneNum.invalid">
                         Phone number must be numbers
                     </mat-error>
                 </mat-form-field>
@@ -24,7 +24,7 @@
             <mat-grid-tile [colspan]="2" [rowspan]="1">
                 <mat-form-field>
                     <input matInput placeholder="Address" formControlName="address">
-                    <mat-error *ngIf="additionForm.controls.address.invalid">
+                    <mat-error *ngIf="modForm.controls.address.invalid">
                         Address must be a string
                     </mat-error>
                 </mat-form-field>
@@ -33,7 +33,7 @@
 
         <div class="btns">
             <button mat-raised-button class="btns__cancel" color="basic" mat-dialog-close>Cancel</button>
-            <button mat-raised-button class="btns__add" color="accent" [disabled]="!additionForm.valid" type="submit">Add</button>
+            <button mat-raised-button class="btns__add" color="accent" [disabled]="!modForm.valid" type="submit">Add</button>
         </div>
     </form>
 </div>

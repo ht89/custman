@@ -4,19 +4,19 @@ import { Customer } from '../customer.interface';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
-    selector: 'app-addition',
-    templateUrl: './addition.component.html',
-    styleUrls: ['./addition.component.scss']
+    selector: 'app-modification',
+    templateUrl: './modification.component.html',
+    styleUrls: ['./modification.component.scss']
 })
-export class AdditionComponent implements OnInit {
-    additionForm: FormGroup;
+export class ModificationComponent implements OnInit {
+    modForm: FormGroup;
     matcher: any;
 
-    constructor(private dialogRef: MatDialogRef<AdditionComponent>,
+    constructor(private dialogRef: MatDialogRef<ModificationComponent>,
         private fb: FormBuilder) { }
 
     ngOnInit() {
-        this.additionForm = this.fb.group({
+        this.modForm = this.fb.group({
             name: ['', [Validators.pattern(/\D+/)]],
             phoneNum: ['', [Validators.pattern(/\d+/)]],
             address: ['', [Validators.pattern(/\D+/)]]
@@ -27,7 +27,7 @@ export class AdditionComponent implements OnInit {
         this.dialogRef.close();
     }
 
-    add(model: Customer, isValid: boolean) {
+    save(model: Customer, isValid: boolean) {
         console.log(model, isValid);
 
         this.dialogRef.close(model);

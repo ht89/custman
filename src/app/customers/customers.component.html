@@ -25,7 +25,7 @@
         <ng-container matColumnDef="modification">
             <mat-header-cell *matHeaderCellDef> Edit / Delete </mat-header-cell>
             <mat-cell *matCellDef="let customer">
-                <button class="edit-btn" mat-icon-button>
+                <button class="edit-btn" mat-icon-button (click)="openEditDialog(customer)">
                     <mat-icon>build</mat-icon>
                 </button>
 

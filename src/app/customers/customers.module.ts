@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import {MatTableModule} from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
-import { AdditionComponent } from './addition/addition.component';
+import { ModificationComponent } from './modification/modification.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatGridListModule} from '@angular/material/grid-list';
@@ -25,8 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
         MatIconModule
     ],
     exports: [],
-    declarations: [CustomersComponent, AdditionComponent],
+    declarations: [CustomersComponent, ModificationComponent],
     providers: [],
-    entryComponents: [AdditionComponent]
+    entryComponents: [ModificationComponent]
 })
 export class CustomersModule { }

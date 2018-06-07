@@ -2,8 +2,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/internal/Observable';
 import { MatDialog } from '@angular/material/dialog';
-import { AdditionComponent } from './addition/addition.component';
 import { Customer } from './customer.interface';
+import { ModificationComponent } from './modification/modification.component';
 
 @Component({
     selector: 'app-customers',
@@ -26,7 +26,7 @@ export class CustomersComponent implements OnInit {
     }
 
     openAdditionDialog() {
-        const additionDialogRef = this.dialog.open(AdditionComponent, {
+        const additionDialogRef = this.dialog.open(ModificationComponent, {
             width: '500px'
         });
 
@@ -39,7 +39,26 @@ export class CustomersComponent implements OnInit {
         });
     }
 
+    openEditDialog(customer: Customer) {
+        const editDialogRef = this.dialog.open(ModificationComponent, {
+            width: '500px',
+            data: customer
+        });
+
+        editDialogRef.afterClosed().subscribe(result => {
+            console.log('The edit dialog is closed', result);
+
+            if (result) {
+                this.editCustomer(result);
+            }
+        });
+    }
+
     addCustomer(customer: Customer) {
         this.customersCollection.add(customer);
+    }
+
+    editCustomer(customer: Customer) {
+
     }
 }
