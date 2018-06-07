@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Customer } from '../customer.interface';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { CustomerId } from '../customer-id.interface';
 
 @Component({
     selector: 'app-modification',
@@ -18,6 +19,7 @@ export class ModificationComponent implements OnInit {
 
     ngOnInit() {
         this.modForm = this.fb.group({
+            id: [this.data['customer'] ? this.data['customer'].id : ''],
             name: [this.data['customer'] ? this.data['customer'].name : '', [Validators.pattern(/\D+/)]],
             phoneNum: [this.data['customer'] ? this.data['customer'].phoneNum : '', [Validators.pattern(/\d+/)]],
             address: [this.data['customer'] ? this.data['customer'].address : '', [Validators.pattern(/\D+/)]]
@@ -28,7 +30,7 @@ export class ModificationComponent implements OnInit {
         this.dialogRef.close();
     }
 
-    save(model: Customer, isValid: boolean) {
+    save(model: CustomerId, isValid: boolean) {
         console.log(model, isValid);
 
         this.dialogRef.close(model);

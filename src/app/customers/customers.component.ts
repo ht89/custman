@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/internal/Observable';
 import { MatDialog } from '@angular/material/dialog';
 import { Customer } from './customer.interface';
 import { ModificationComponent } from './modification/modification.component';
+import { map } from 'rxjs/operators';
+import { CustomerId } from './customer-id.interface';
 
 @Component({
     selector: 'app-customers',
@@ -13,6 +15,7 @@ import { ModificationComponent } from './modification/modification.component';
 })
 export class CustomersComponent implements OnInit {
     private customersCollection: AngularFirestoreCollection<Customer>;
+    private customersDocument: AngularFirestoreDocument<Customer>;
     customers: Observable<Customer[]>;
 
     columnsToDisplay = ['number', 'name', 'phoneNum', 'address', 'modification'];
@@ -22,7 +25,13 @@ export class CustomersComponent implements OnInit {
 
     ngOnInit() {
         this.customersCollection = this.db.collection<Customer>('customers');
-        this.customers = this.customersCollection.valueChanges();
+        this.customers = this.customersCollection.snapshotChanges().pipe(
+            map(actions => actions.map(a => {
+                const data = a.payload.doc.data() as Customer;
+                const id = a.payload.doc.id;
+                return { id, ...data };
+            }))
+        );
     }
 
     openAdditionDialog() {
@@ -42,7 +51,7 @@ export class CustomersComponent implements OnInit {
         });
     }
 
-    openEditDialog(customer: Customer) {
+    openEditDialog(customer: CustomerId) {
         const editDialogRef = this.dialog.open(ModificationComponent, {
             width: '500px',
             data: {
@@ -64,7 +73,8 @@ export class CustomersComponent implements OnInit {
         this.customersCollection.add(customer);
     }
 
-    editCustomer(customer: Customer) {
-
+    editCustomer(customer: CustomerId) {
+        this.customersDocument = this.db.doc<Customer>(`customers/${customer.id}`);
+        this.customersDocument.update(customer);
     }
 }
