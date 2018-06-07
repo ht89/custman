@@ -77,4 +77,9 @@ export class CustomersComponent implements OnInit {
         this.customersDocument = this.db.doc<Customer>(`customers/${customer.id}`);
         this.customersDocument.update(customer);
     }
+
+    deleteCustomer(customer: CustomerId) {
+        this.customersDocument = this.db.doc<Customer>(`customers/${customer.id}`);
+        this.customersDocument.delete();
+    }
 }
