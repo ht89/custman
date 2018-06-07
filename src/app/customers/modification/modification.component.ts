@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Customer } from '../customer.interface';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
@@ -13,13 +13,14 @@ export class ModificationComponent implements OnInit {
     matcher: any;
 
     constructor(private dialogRef: MatDialogRef<ModificationComponent>,
+        @Inject(MAT_DIALOG_DATA) public data: Object,
         private fb: FormBuilder) { }
 
     ngOnInit() {
         this.modForm = this.fb.group({
-            name: ['', [Validators.pattern(/\D+/)]],
-            phoneNum: ['', [Validators.pattern(/\d+/)]],
-            address: ['', [Validators.pattern(/\D+/)]]
+            name: [this.data['customer'].name, [Validators.pattern(/\D+/)]],
+            phoneNum: [this.data['customer'].phoneNum, [Validators.pattern(/\d+/)]],
+            address: [this.data['customer'].address, [Validators.pattern(/\D+/)]]
         });
     }
 

@@ -1,5 +1,5 @@
 <div class="addition-wrapper">
-    <h2 mat-dialog-title>Add customer</h2>
+    <h2 mat-dialog-title>{{ data.title }}</h2>
 
     <form [formGroup]="modForm" novalidate (ngSubmit)="save(modForm.value, modForm.valid)">
         <mat-grid-list cols="2" rowHeight="100px" gutterSize="15px">

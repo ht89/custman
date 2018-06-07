@@ -27,7 +27,10 @@ export class CustomersComponent implements OnInit {
 
     openAdditionDialog() {
         const additionDialogRef = this.dialog.open(ModificationComponent, {
-            width: '500px'
+            width: '500px',
+            data: {
+                title: 'Add customer'
+            }
         });
 
         additionDialogRef.afterClosed().subscribe(result => {
@@ -42,7 +45,10 @@ export class CustomersComponent implements OnInit {
     openEditDialog(customer: Customer) {
         const editDialogRef = this.dialog.open(ModificationComponent, {
             width: '500px',
-            data: customer
+            data: {
+                title: 'Edit customer',
+                customer: customer
+            }
         });
 
         editDialogRef.afterClosed().subscribe(result => {
