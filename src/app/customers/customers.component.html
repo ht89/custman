@@ -22,6 +22,19 @@
             <mat-cell *matCellDef="let customer"> {{customer.address}} </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="modification">
+            <mat-header-cell *matHeaderCellDef> Edit / Delete </mat-header-cell>
+            <mat-cell *matCellDef="let customer">
+                <button class="edit-btn" mat-icon-button>
+                    <mat-icon>build</mat-icon>
+                </button>
+
+                <button class="delete-btn" mat-icon-button>
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
         <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
         <mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></mat-row>
     </mat-table>

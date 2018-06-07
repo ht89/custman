@@ -1,4 +1,6 @@
 @import '../../assets/_variables.scss';
-
 .customers-wrapper {
+    .edit-btn.mat-icon-button {
+        margin-right: $space15;
+    }
 }

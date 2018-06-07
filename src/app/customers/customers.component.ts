@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/internal/Observable';
 import { MatDialog } from '@angular/material/dialog';
@@ -8,13 +8,14 @@ import { Customer } from './customer.interface';
 @Component({
     selector: 'app-customers',
     templateUrl: './customers.component.html',
-    styleUrls: ['./customers.component.scss']
+    styleUrls: ['./customers.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class CustomersComponent implements OnInit {
     private customersCollection: AngularFirestoreCollection<Customer>;
     customers: Observable<Customer[]>;
 
-    columnsToDisplay = ['number', 'name', 'phoneNum', 'address'];
+    columnsToDisplay = ['number', 'name', 'phoneNum', 'address', 'modification'];
 
     constructor(private db: AngularFirestore,
         private dialog: MatDialog) { }
