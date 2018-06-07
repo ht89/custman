@@ -17,9 +17,9 @@ export class AdditionComponent implements OnInit {
 
     ngOnInit() {
         this.additionForm = this.fb.group({
-            name: ['', [Validators.required]],
+            name: ['', [Validators.pattern(/\D+/)]],
             phoneNum: ['', [Validators.required]],
-            address: ['', [Validators.required]]
+            address: ['', [Validators.pattern(/\D+/)]]
         });
     }
 
