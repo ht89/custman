@@ -14,12 +14,14 @@ import { ROUTES } from './app.routes';
 import { CustomersModule } from './customers/customers.module';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { ProductsComponent } from './products/products.component';
 
 
 @NgModule({
     declarations: [
         AppComponent,
-        HeaderComponent
+        HeaderComponent,
+        ProductsComponent
     ],
     imports: [
         BrowserModule,
