@@ -1,5 +1,4 @@
 @import '../../assets/_variables.scss';
-
 .header {
     background-color: $primary-color;
     padding: $space10;
@@ -21,13 +20,26 @@
         &.active {
             background-color: deepskyblue;
         }
-        &:hover {
-            background-color: lightslategray;
-        }
+       
     }
     &__left {
         display: inline-block;
         margin-left: $space30;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .header {
+        display: block;
+        a {
+            float: none;
+            display: block;
+            text-align: left;
+        }
+        &__left {
+            display: block;
+            margin-left: 0;
+        }
     }
     
 }
