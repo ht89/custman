@@ -15,12 +15,14 @@ import { CustomersModule } from './customers/customers.module';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { ProductsModule } from './products/products.module';
+import { SharedComponent } from './shared/shared.component';
 
 
 @NgModule({
     declarations: [
         AppComponent,
-        HeaderComponent
+        HeaderComponent,
+        SharedComponent
     ],
     imports: [
         BrowserModule,
