@@ -14,14 +14,13 @@ import { ROUTES } from './app.routes';
 import { CustomersModule } from './customers/customers.module';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
-import { ProductsComponent } from './products/products.component';
+import { ProductsModule } from './products/products.module';
 
 
 @NgModule({
     declarations: [
         AppComponent,
-        HeaderComponent,
-        ProductsComponent
+        HeaderComponent
     ],
     imports: [
         BrowserModule,
@@ -31,7 +30,8 @@ import { ProductsComponent } from './products/products.component';
         AngularFirestoreModule, // for database features
         AngularFireAuthModule,
         // AngularFireStorageModule // for storage features
-        CustomersModule
+        CustomersModule,
+        ProductsModule
     ],
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy }

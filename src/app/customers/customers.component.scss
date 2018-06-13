@@ -1,16 +1,4 @@
 @import '../../assets/_variables.scss';
 .customers {
-    .ui-table {
-        .edit-btn {
-            margin-right: $space15;
-        }
-        &-tbody {
-            > tr td:nth-child(4) {
-                text-align: center;
-            }
-        }
-    }
-    &__search {
-        float: right;
-    }
+    
 }

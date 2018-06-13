@@ -3,7 +3,7 @@
         <div class="ui-g-12">
             <button pButton type="button" label="Add customer" (click)="openDialog('Add customer')"></button>
 
-            <div class="customers__search ui-g-4 ui-g-nopad">
+            <div class="table-search ui-g-4 ui-g-nopad">
                 <i class="fa fa-search ui-g-1"></i>
                 <input class="ui-g-11" type="text" pInputText size="50" placeholder="Search here" (input)="dt.filterGlobal($event.target.value, 'contains')">
             </div>
