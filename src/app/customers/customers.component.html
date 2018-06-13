@@ -1,5 +1,9 @@
-<div class="customers-wrapper">
+<div class="customers">
     <button mat-raised-button color="accent" (click)="openAdditionDialog()">Add Customer</button>
+
+    <mat-form-field>
+        <input matInput placeholder="Search" value="{{ searchKeyword }}">
+    </mat-form-field>
 
     <mat-table [dataSource]='customers | async'>
         <ng-container matColumnDef="number">

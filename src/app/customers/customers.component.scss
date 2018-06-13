@@ -1,10 +1,14 @@
 @import '../../assets/_variables.scss';
-.customers-wrapper {
+.customers {
     .mat-table {
+        clear: both;
         .mat-column-modification {
             .edit-btn.mat-icon-button {
                 margin-right: $space15;
             }
         }
+    }
+    .mat-form-field {
+        float: right;
     }
 }
