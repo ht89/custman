@@ -1,68 +1,32 @@
-<div class="customers">
+<div class="customers ui-g">
     <!-- <button mat-raised-button color="accent" (click)="openAdditionDialog()">Add Customer</button>
 
     <mat-form-field>
         <input matInput placeholder="Search" value="{{ searchKeyword }}">
     </mat-form-field> -->
 
-    <!-- <mat-table [dataSource]='customers | async'>
-        <ng-container matColumnDef="number">
-            <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-            <mat-cell *matCellDef="let i = index"> {{i + 1}} </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-            <mat-cell *matCellDef="let customer"> {{customer.name}} </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="phoneNum">
-            <mat-header-cell *matHeaderCellDef> Phone Number </mat-header-cell>
-            <mat-cell *matCellDef="let customer"> {{customer.phoneNum}} </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="address">
-            <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
-            <mat-cell *matCellDef="let customer"> {{customer.address}} </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="modification">
-            <mat-header-cell *matHeaderCellDef> Edit / Delete </mat-header-cell>
-            <mat-cell *matCellDef="let customer">
-                <button class="edit-btn" mat-icon-button (click)="openEditDialog(customer)">
-                    <mat-icon>build</mat-icon>
-                </button>
-
-                <button class="delete-btn" mat-icon-button (click)="deleteCustomer(customer)">
-                    <mat-icon>delete</mat-icon>
-                </button>
-            </mat-cell>
-        </ng-container>
-
-        <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
-        <mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></mat-row>
-    </mat-table> -->
-
-
-    <p-table [value]="customers | async">
-        <ng-template pTemplate="header">
-            <tr>
-                <th *ngFor="let col of cols">
-                    {{col.header}}
-                </th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-customer>
-            <tr>
-                <td *ngFor="let col of cols">
-                    <span *ngIf="col.field !== 'modification'; else modCell">
-                        {{ customer[col.field] }}
-                    </span>
-                    <ng-template #modCell>
-                        <button pButton type="button" (click)="count()" icon="pi pi-build"></button>
-                    </ng-template>
-                </td>
-            </tr>
-        </ng-template>
-    </p-table>
+    <div class="ui-g-12">
+        <p-table [value]="customers | async">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th *ngFor="let col of cols">
+                        {{col.header}}
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-customer>
+                <tr>
+                    <td *ngFor="let col of cols">
+                        <span *ngIf="col.field !== 'modification'; else modCell">
+                            {{ customer[col.field] }}
+                        </span>
+                        <ng-template #modCell>
+                            <button pButton type="button" class="edit-btn" (click)="openEditDialog(customer)" icon="fas fa-edit"></button>
+                            <button pButton type="button" class="delete-btn" (click)="deleteCustomer(customer)" icon="fas fa-trash"></button>
+                        </ng-template>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
 </div>
