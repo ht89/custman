@@ -1,6 +1,6 @@
 <div class="customers ui-g">
     <div class="ui-g-12">
-        <button pButton type="button" label="Add customer" (click)="openAdditionDialog()"></button>
+        <button pButton type="button" label="Add customer" (click)="openDialog('Add customer')"></button>
     </div>
 
     <div class="ui-g-12">
@@ -19,7 +19,7 @@
                             {{ customer[col.field] }}
                         </span>
                         <ng-template #modCell>
-                            <button pButton type="button" class="edit-btn" (click)="openEditDialog(customer)" icon="fas fa-edit"></button>
+                            <button pButton type="button" class="edit-btn" (click)="openDialog('Edit customer', customer)" icon="fas fa-edit"></button>
                             <button pButton type="button" class="delete-btn" (click)="deleteCustomer(customer)" icon="fas fa-trash"></button>
                         </ng-template>
                     </td>
@@ -28,3 +28,7 @@
         </p-table>
     </div>
 </div>
+
+<p-dialog [header]="dialogTitle" [(visible)]="showDialog" [width]="500">
+    <app-modification [customer]="edittedCustomer" (saveModification)="saveModification($event)" (closeDialog)="showDialog = false"></app-modification>
+</p-dialog>

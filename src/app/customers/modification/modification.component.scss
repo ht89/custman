@@ -1,13 +1,20 @@
 @import '../../../assets/_variables.scss';
 
-.addition-wrapper {
-    .mat-form-field {
-        width: 100%;
-    }
-    .btns {
-        float: right;
-        &__cancel {
-            margin-right: $space5;
+.modification {
+    form {
+        .input {
+            padding-bottom: $space15;
+            &__error {
+                color: #cd0a0a;
+            }
         }
+        .btns {
+            float: right;
+            padding-right: $space15;
+            &__cancel {
+                margin-right: $space5;
+            }
+        }
+        
     }
 }

@@ -14,6 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
 import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
+import {DialogModule} from 'primeng/dialog';
+import {InputTextModule} from 'primeng/inputtext';
 
 @NgModule({
     imports: [
@@ -27,7 +29,9 @@ import {ButtonModule} from 'primeng/button';
         MatGridListModule,
         MatIconModule,
         TableModule,
-        ButtonModule
+        ButtonModule,
+        DialogModule,
+        InputTextModule
     ],
     exports: [],
     declarations: [CustomersComponent, ModificationComponent, DeleteConfirmationComponent],

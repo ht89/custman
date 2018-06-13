@@ -19,7 +19,12 @@ export class CustomersComponent implements OnInit {
     private customersDocument: AngularFirestoreDocument<Customer>;
     customers: Observable<Customer[]>;
 
+    edittedCustomer: CustomerId;
+
     cols: any[];
+
+    showDialog = false;
+    dialogTitle = '';
 
     constructor(private db: AngularFirestore,
         private dialog: MatDialog) { }
@@ -42,39 +47,26 @@ export class CustomersComponent implements OnInit {
         ];
     }
 
-    openAdditionDialog() {
-        const additionDialogRef = this.dialog.open(ModificationComponent, {
-            width: '500px',
-            data: {
-                title: 'Add customer'
-            }
-        });
+    openDialog(title: string, customer?: any) {
+        this.dialogTitle = title;
+        this.showDialog = true;
 
-        additionDialogRef.afterClosed().subscribe(result => {
-            console.log('The addition dialog is closed', result);
-
-            if (result) {
-                this.addCustomer(result);
-            }
-        });
+        if (customer) {
+            this.edittedCustomer = customer;
+        } else {
+            this.edittedCustomer = null;
+        }
     }
 
-    openEditDialog(customer: CustomerId) {
-        const editDialogRef = this.dialog.open(ModificationComponent, {
-            width: '500px',
-            data: {
-                title: 'Edit customer',
-                customer: customer
-            }
-        });
+    saveModification(customer: any) {
+        console.log(customer);
+        if (!customer.id) {
+            this.addCustomer(customer);
+        } else {
+            this.editCustomer(customer);
+        }
 
-        editDialogRef.afterClosed().subscribe(result => {
-            console.log('The edit dialog is closed', result);
-
-            if (result) {
-                this.editCustomer(result);
-            }
-        });
+        this.showDialog = false;
     }
 
     addCustomer(customer: Customer) {

@@ -1,39 +1,42 @@
-<div class="addition-wrapper">
-    <h2 mat-dialog-title>{{ data.title }}</h2>
-
+<div class="modification ui-g">
     <form [formGroup]="modForm" novalidate (ngSubmit)="save(modForm.value, modForm.valid)">
-        <mat-grid-list cols="2" rowHeight="100px" gutterSize="15px">
-            <mat-grid-tile [colspan]="1" [rowspan]="1">
-                <mat-form-field>
-                    <input matInput placeholder="Name" formControlName="name">
-                    <mat-error *ngIf="modForm.controls.name.invalid">
+        <div class="ui-fluid">
+            <div class="ui-g-12">
+                <div class="ui-g-6 input">
+                    <span class="ui-float-label">
+                        <input id="name-float-input" type="text" pInputText formControlName="name" />
+                        <label for="name-float-input">Name</label>
+                    </span>
+                    <small class="input__error" *ngIf="modForm.controls.name.dirty && modForm.controls.name.invalid">
                         Name must be a string
-                    </mat-error>
-                </mat-form-field>
-            </mat-grid-tile>
+                    </small>
+                </div>
 
-            <mat-grid-tile [colspan]="1" [rowspan]="1">
-                <mat-form-field>
-                    <input matInput placeholder="Phone Number" formControlName="phoneNum">
-                    <mat-error *ngIf="modForm.controls.phoneNum.invalid">
+                <div class="ui-g-6">
+                    <span class="ui-float-label">
+                        <input type="text" pInputText formControlName="phoneNum" />
+                        <label for="name-float-input">Phone number</label>
+                    </span>
+                    <small class="input__error" *ngIf="modForm.controls.phoneNum.dirty && modForm.controls.phoneNum.invalid">
                         Phone number must be numbers
-                    </mat-error>
-                </mat-form-field>
-            </mat-grid-tile>
+                    </small>
+                </div>
 
-            <mat-grid-tile [colspan]="2" [rowspan]="1">
-                <mat-form-field>
-                    <input matInput placeholder="Address" formControlName="address">
-                    <mat-error *ngIf="modForm.controls.address.invalid">
+                <div class="ui-g-12 input">
+                    <span class="ui-float-label">
+                        <input type="text" pInputText formControlName="address" />
+                        <label for="name-float-input">Address</label>
+                    </span>
+                    <small class="input__error" *ngIf="modForm.controls.address.dirty && modForm.controls.address.invalid">
                         Address must be a string
-                    </mat-error>
-                </mat-form-field>
-            </mat-grid-tile>
-        </mat-grid-list>
+                    </small>
+                </div>
+            </div>
+        </div>
 
         <div class="btns">
-            <button mat-raised-button class="btns__cancel" color="basic" mat-dialog-close>Cancel</button>
-            <button mat-raised-button class="btns__submit" color="accent" [disabled]="!modForm.valid" type="submit">Submit</button>
+            <button pButton type="button" class="btns__cancel ui-button-secondary" label="Cancel" (click)="closeDialog.emit()"></button>
+            <button pButton type="button" class="btns__submit" label="Submit" [disabled]="!modForm.valid" type="submit"></button>
         </div>
     </form>
 </div>
