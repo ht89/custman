@@ -1,22 +1,33 @@
 @import '../../assets/_variables.scss';
 
 .header {
-    overflow: hidden;
-    background-color: rgb(35, 153, 229);
+    background-color: $primary-color;
     padding: 20px 10px;
+    display: flex;
+    align-items: center;
     a {
         float: left;
         color: white;
         text-align: center;
         text-decoration: none;
-        font-size: $headerFontSize;
-        line-height: $lineHeight;
-        border-radius: $borderRadius;
+        font-size: $header-fontsize;
+        line-height: $line-height;
+        border-radius: $border-radius;
         padding: $space10;
+        &.logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        &.active {
+            background-color: deepskyblue;
+        }
+        &:hover {
+            background-color: lightslategray;
+        }
     }
-
-    a.logo {
-        font-size: 1.5rem;
-        font-weight: bold;
+    &__left {
+        display: inline-block;
+        margin-left: $space30;
     }
+    
 }
