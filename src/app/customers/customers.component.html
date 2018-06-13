@@ -1,9 +1,7 @@
 <div class="customers ui-g">
-    <!-- <button mat-raised-button color="accent" (click)="openAdditionDialog()">Add Customer</button>
-
-    <mat-form-field>
-        <input matInput placeholder="Search" value="{{ searchKeyword }}">
-    </mat-form-field> -->
+    <div class="ui-g-12">
+        <button pButton type="button" label="Add customer" (click)="openAdditionDialog()"></button>
+    </div>
 
     <div class="ui-g-12">
         <p-table [value]="customers | async">
