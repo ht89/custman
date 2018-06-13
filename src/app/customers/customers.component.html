@@ -1,20 +1,25 @@
 <div class="customers ui-g">
     <div class="ui-g-12">
         <button pButton type="button" label="Add customer" (click)="openDialog('Add customer')"></button>
+
+        <div class="customers__search ui-g-4 ui-g-nopad">
+            <i class="fa fa-search ui-g-1"></i>
+            <input class="ui-g-11" type="text" pInputText size="50" placeholder="Search here" (input)="dt.filterGlobal($event.target.value, 'contains')">
+        </div>
     </div>
 
     <div class="ui-g-12">
-        <p-table [value]="customers | async">
-            <ng-template pTemplate="header">
+        <p-table #dt [columns]="cols" [value]="customers | async">
+            <ng-template pTemplate="header" let-columns>
                 <tr>
-                    <th *ngFor="let col of cols">
+                    <th *ngFor="let col of columns">
                         {{col.header}}
                     </th>
                 </tr>
             </ng-template>
-            <ng-template pTemplate="body" let-customer>
+            <ng-template pTemplate="body" let-customer let-columns="columns">
                 <tr>
-                    <td *ngFor="let col of cols">
+                    <td *ngFor="let col of columns">
                         <span *ngIf="col.field !== 'modification'; else modCell">
                             {{ customer[col.field] }}
                         </span>
