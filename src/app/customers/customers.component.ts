@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/internal/Observable';
-import { MatDialog } from '@angular/material/dialog';
 import { Customer } from './customer.interface';
 import { ModificationComponent } from './modification/modification.component';
 import { map } from 'rxjs/operators';
@@ -27,7 +26,6 @@ export class CustomersComponent implements OnInit {
     dialogTitle = '';
 
     constructor(private db: AngularFirestore,
-        private dialog: MatDialog,
         private confirmationService: ConfirmationService) { }
 
     ngOnInit() {

@@ -1,5 +1,4 @@
 import { Component, OnInit, Inject, Output, EventEmitter, Input, SimpleChanges, OnChanges } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Customer } from '../customer.interface';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { CustomerId } from '../customer-id.interface';
