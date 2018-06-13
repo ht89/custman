@@ -6,6 +6,7 @@ import { Customer } from './customer.interface';
 import { ModificationComponent } from './modification/modification.component';
 import { map } from 'rxjs/operators';
 import { CustomerId } from './customer-id.interface';
+import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
 
 @Component({
     selector: 'app-customers',
@@ -79,7 +80,18 @@ export class CustomersComponent implements OnInit {
     }
 
     deleteCustomer(customer: CustomerId) {
-        this.customersDocument = this.db.doc<Customer>(`customers/${customer.id}`);
-        this.customersDocument.delete();
+        const confirmationDialogRef = this.dialog.open(DeleteConfirmationComponent, {
+            data: {
+                name: customer.name
+            }
+        });
+
+        confirmationDialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this.customersDocument = this.db.doc<Customer>(`customers/${customer.id}`);
+                this.customersDocument.delete();
+            }
+        });
+
     }
 }

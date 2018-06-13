@@ -11,6 +11,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
 
 @NgModule({
     imports: [
@@ -25,8 +26,8 @@ import { ReactiveFormsModule } from '@angular/forms';
         MatIconModule
     ],
     exports: [],
-    declarations: [CustomersComponent, ModificationComponent],
+    declarations: [CustomersComponent, ModificationComponent, DeleteConfirmationComponent],
     providers: [],
-    entryComponents: [ModificationComponent]
+    entryComponents: [ModificationComponent, DeleteConfirmationComponent]
 })
 export class CustomersModule { }

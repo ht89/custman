@@ -1,0 +1,6 @@
+<h2 mat-dialog-title>Deleting {{ data.name }}</h2>
+<p>Are you sure about this?</p>
+<div class="btns">
+    <button mat-raised-button class="btns__no" color="basic" mat-dialog-close (click)="onButtonClick()">No</button>
+    <button mat-raised-button class="btns__yes" color="accent" (click)="onButtonClick(true)">Yes</button>
+</div>
