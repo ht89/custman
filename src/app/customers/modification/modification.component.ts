@@ -36,7 +36,7 @@ export class ModificationComponent implements OnInit, OnChanges {
         }
     }
 
-    save(model: any, isValid: boolean) {
+    save(model: Customer & CustomerId, isValid: boolean) {
         this.saveModification.emit(model);
     }
 }

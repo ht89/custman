@@ -32,3 +32,5 @@
 <p-dialog [header]="dialogTitle" [(visible)]="showDialog" [width]="500">
     <app-modification [customer]="edittedCustomer" (saveModification)="saveModification($event)" (closeDialog)="showDialog = false"></app-modification>
 </p-dialog>
+
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" width="425"></p-confirmDialog>

@@ -6,7 +6,7 @@ import { Customer } from './customer.interface';
 import { ModificationComponent } from './modification/modification.component';
 import { map } from 'rxjs/operators';
 import { CustomerId } from './customer-id.interface';
-import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
+import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 
 @Component({
     selector: 'app-customers',
@@ -27,7 +27,8 @@ export class CustomersComponent implements OnInit {
     dialogTitle = '';
 
     constructor(private db: AngularFirestore,
-        private dialog: MatDialog) { }
+        private dialog: MatDialog,
+        private confirmationService: ConfirmationService) { }
 
     ngOnInit() {
         this.customersCollection = this.db.collection<Customer>('customers');
@@ -47,9 +48,11 @@ export class CustomersComponent implements OnInit {
         ];
     }
 
-    openDialog(title: string, customer?: any) {
+    openDialog(title: string, customer?: CustomerId) {
         this.dialogTitle = title;
         this.showDialog = true;
+
+        console.log(customer);
 
         if (customer) {
             this.edittedCustomer = customer;
@@ -58,8 +61,8 @@ export class CustomersComponent implements OnInit {
         }
     }
 
-    saveModification(customer: any) {
-        console.log(customer);
+    saveModification(customer: CustomerId) {
+        // console.log(customer);
         if (!customer.id) {
             this.addCustomer(customer);
         } else {
@@ -69,7 +72,9 @@ export class CustomersComponent implements OnInit {
         this.showDialog = false;
     }
 
-    addCustomer(customer: Customer) {
+    addCustomer(customer: CustomerId) {
+        // This prevents the empty id being added to the collection
+        delete customer.id;
         this.customersCollection.add(customer);
     }
 
@@ -79,18 +84,12 @@ export class CustomersComponent implements OnInit {
     }
 
     deleteCustomer(customer: CustomerId) {
-        const confirmationDialogRef = this.dialog.open(DeleteConfirmationComponent, {
-            data: {
-                name: customer.name
-            }
-        });
-
-        confirmationDialogRef.afterClosed().subscribe(result => {
-            if (result) {
+        this.confirmationService.confirm({
+            message: `Are you sure you want to delete ${customer.name} ?`,
+            accept: () => {
                 this.customersDocument = this.db.doc<Customer>(`customers/${customer.id}`);
                 this.customersDocument.delete();
             }
         });
-
     }
 }

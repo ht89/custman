@@ -11,11 +11,12 @@ import {MatInputModule} from '@angular/material/input';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
 import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
 import {DialogModule} from 'primeng/dialog';
 import {InputTextModule} from 'primeng/inputtext';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 
 @NgModule({
     imports: [
@@ -31,11 +32,12 @@ import {InputTextModule} from 'primeng/inputtext';
         TableModule,
         ButtonModule,
         DialogModule,
-        InputTextModule
+        InputTextModule,
+        ConfirmDialogModule
     ],
     exports: [],
-    declarations: [CustomersComponent, ModificationComponent, DeleteConfirmationComponent],
-    providers: [],
-    entryComponents: [ModificationComponent, DeleteConfirmationComponent]
+    declarations: [CustomersComponent, ModificationComponent],
+    providers: [ConfirmationService],
+    entryComponents: [ModificationComponent]
 })
 export class CustomersModule { }
