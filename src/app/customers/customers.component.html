@@ -9,11 +9,12 @@
     </div>
 
     <div class="ui-g-12">
-        <p-table #dt [columns]="cols" [value]="customers | async">
+        <p-table #dt [columns]="cols" [value]="customers | async" sortMode="multiple">
             <ng-template pTemplate="header" let-columns>
                 <tr>
-                    <th *ngFor="let col of columns">
+                    <th *ngFor="let col of columns" [pSortableColumn]="col.field !== 'modification' && col.field">
                         {{col.header}}
+                        <p-sortIcon *ngIf="col.field !== 'modification'" [field]="col.field"></p-sortIcon>
                     </th>
                 </tr>
             </ng-template>
