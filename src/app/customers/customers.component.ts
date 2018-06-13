@@ -52,8 +52,6 @@ export class CustomersComponent implements OnInit {
         this.dialogTitle = title;
         this.showDialog = true;
 
-        console.log(customer);
-
         if (customer) {
             this.edittedCustomer = customer;
         } else {
