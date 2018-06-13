@@ -10,6 +10,7 @@ import {DialogModule} from 'primeng/dialog';
 import {InputTextModule} from 'primeng/inputtext';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/components/common/confirmationservice';
+import {CardModule} from 'primeng/card';
 
 @NgModule({
     imports: [
@@ -19,7 +20,8 @@ import { ConfirmationService } from 'primeng/components/common/confirmationservi
         ButtonModule,
         DialogModule,
         InputTextModule,
-        ConfirmDialogModule
+        ConfirmDialogModule,
+        CardModule
     ],
     exports: [],
     declarations: [CustomersComponent, ModificationComponent],
