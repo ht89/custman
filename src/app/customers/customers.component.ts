@@ -19,7 +19,7 @@ export class CustomersComponent implements OnInit {
     private customersDocument: AngularFirestoreDocument<Customer>;
     customers: Observable<Customer[]>;
 
-    columnsToDisplay = ['number', 'name', 'phoneNum', 'address', 'modification'];
+    cols: any[];
 
     constructor(private db: AngularFirestore,
         private dialog: MatDialog) { }
@@ -33,6 +33,13 @@ export class CustomersComponent implements OnInit {
                 return { id, ...data };
             }))
         );
+
+        this.cols = [
+            { field: 'name', header: 'Name' },
+            { field: 'phoneNum', header: 'Phone Number' },
+            { field: 'address', header: 'Address' },
+            { field: 'modification', header: 'Edit / Delete' }
+        ];
     }
 
     openAdditionDialog() {

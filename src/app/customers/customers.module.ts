@@ -12,6 +12,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
+import {TableModule} from 'primeng/table';
+import {ButtonModule} from 'primeng/button';
 
 @NgModule({
     imports: [
@@ -23,7 +25,9 @@ import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confi
         MatFormFieldModule,
         MatInputModule,
         MatGridListModule,
-        MatIconModule
+        MatIconModule,
+        TableModule,
+        ButtonModule
     ],
     exports: [],
     declarations: [CustomersComponent, ModificationComponent, DeleteConfirmationComponent],

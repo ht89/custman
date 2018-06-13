@@ -1,11 +1,11 @@
 <div class="customers">
-    <button mat-raised-button color="accent" (click)="openAdditionDialog()">Add Customer</button>
+    <!-- <button mat-raised-button color="accent" (click)="openAdditionDialog()">Add Customer</button>
 
     <mat-form-field>
         <input matInput placeholder="Search" value="{{ searchKeyword }}">
-    </mat-form-field>
+    </mat-form-field> -->
 
-    <mat-table [dataSource]='customers | async'>
+    <!-- <mat-table [dataSource]='customers | async'>
         <ng-container matColumnDef="number">
             <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
             <mat-cell *matCellDef="let i = index"> {{i + 1}} </mat-cell>
@@ -41,5 +41,28 @@
 
         <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
         <mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></mat-row>
-    </mat-table>
+    </mat-table> -->
+
+
+    <p-table [value]="customers | async">
+        <ng-template pTemplate="header">
+            <tr>
+                <th *ngFor="let col of cols">
+                    {{col.header}}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-customer>
+            <tr>
+                <td *ngFor="let col of cols">
+                    <span *ngIf="col.field !== 'modification'; else modCell">
+                        {{ customer[col.field] }}
+                    </span>
+                    <ng-template #modCell>
+                        <button pButton type="button" (click)="count()" icon="pi pi-build"></button>
+                    </ng-template>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
 </div>
