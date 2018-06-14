@@ -4,30 +4,24 @@ import { Product } from './product.interface';
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/operators';
 import { ProductId } from './product-id.interface';
+import { SharedComponent } from '../shared/shared.component';
+import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 
 @Component({
     selector: 'app-products',
     templateUrl: './products.component.html',
     styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit {
-    private productsCollection: AngularFirestoreCollection<Product>;
-    private productsDocument: AngularFirestoreDocument<Product>;
+export class ProductsComponent extends SharedComponent implements OnInit {
 
-    products: Observable<Product[]>;
-    cols: any[];
-
-    dialogTitle = '';
-    showDialog = false;
-
-    edittedProduct: ProductId;
-
-
-    constructor(private db: AngularFirestore) { }
+    constructor(public db: AngularFirestore,
+        public confirmationService: ConfirmationService) {
+        super(db, confirmationService);
+    }
 
     ngOnInit() {
-        this.productsCollection = this.db.collection<Product>('products');
-        this.products = this.productsCollection.snapshotChanges().pipe(
+        this.collection = this.db.collection<Product>('products');
+        this.documents = this.collection.snapshotChanges().pipe(
             map(actions => actions.map(a => {
                 const data = a.payload.doc.data() as Product;
                 const id = a.payload.doc.id;
@@ -35,7 +29,7 @@ export class ProductsComponent implements OnInit {
             }))
         );
 
-        this.cols = [
+        this.tableCols = [
             { field: 'name', header: 'Name' },
             { field: 'size', header: 'Size' },
             { field: 'price', header: 'Price' },

@@ -1,16 +1,16 @@
 <p-card title="Products">
     <div class="products ui-g">
         <div class="ui-g-12">
-            <button pButton type="button" label="Add product" (click)="openDialog('Add product')"></button>
+            <button pButton type="button" label="Add product" (click)="openModificationDialog('Add product')"></button>
 
             <div class="table-search ui-g-4 ui-g-nopad">
-                <i class="fa fa-search ui-g-1"></i>
-                <input class="ui-g-11" type="text" pInputText size="50" placeholder="Search here" (input)="dt.filterGlobal($event.target.value, 'contains')">
+                <i class="fa fa-search"></i>
+                <input class="ui-g-12" type="text" pInputText size="50" placeholder="Search here" (input)="dt.filterGlobal($event.target.value, 'contains')">
             </div>
         </div>
 
         <div class="ui-g-12">
-            <p-table #dt [columns]="cols" [value]="products | async" sortMode="multiple">
+            <p-table #dt [columns]="tableCols" [value]="documents | async" sortMode="multiple">
                 <ng-template pTemplate="header" let-columns>
                     <tr>
                         <th *ngFor="let col of columns" [pSortableColumn]="col.field !== 'modification' && col.field">
@@ -26,8 +26,8 @@
                                 {{ customer[col.field] }}
                             </span>
                             <ng-template #modCell>
-                                <button pButton type="button" class="edit-btn" (click)="openDialog('Edit customer', customer)" icon="fas fa-edit"></button>
-                                <button pButton type="button" class="delete-btn" (click)="deleteCustomer(customer)" icon="fas fa-trash"></button>
+                                <button pButton type="button" class="edit-btn" (click)="openModificationDialog('Edit product', product)" icon="fas fa-edit"></button>
+                                <button pButton type="button" class="delete-btn" (click)="deleteDocument(product, 'products')" icon="fas fa-trash"></button>
                             </ng-template>
                         </td>
                     </tr>
