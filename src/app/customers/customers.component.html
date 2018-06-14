@@ -1,7 +1,7 @@
 <p-card title="Customers">
     <div class="customers ui-g">
         <div class="ui-g-12">
-            <button pButton type="button" label="Add customer" (click)="openDialog('Add customer')"></button>
+            <button pButton type="button" label="Add customer" (click)="openModificationDialog('Add customer')"></button>
 
             <div class="table-search ui-g-4 ui-g-nopad">
                 <i class="fa fa-search ui-g-1"></i>
@@ -10,7 +10,7 @@
         </div>
 
         <div class="ui-g-12">
-            <p-table #dt [columns]="cols" [value]="customers | async" sortMode="multiple">
+            <p-table #dt [columns]="tableCols" [value]="documents | async" sortMode="multiple">
                 <ng-template pTemplate="header" let-columns>
                     <tr>
                         <th *ngFor="let col of columns" [pSortableColumn]="col.field !== 'modification' && col.field">
@@ -26,8 +26,8 @@
                                 {{ customer[col.field] }}
                             </span>
                             <ng-template #modCell>
-                                <button pButton type="button" class="edit-btn" (click)="openDialog('Edit customer', customer)" icon="fas fa-edit"></button>
-                                <button pButton type="button" class="delete-btn" (click)="deleteCustomer(customer)" icon="fas fa-trash"></button>
+                                <button pButton type="button" class="edit-btn" (click)="openModificationDialog('Edit customer', customer)" icon="fas fa-edit"></button>
+                                <button pButton type="button" class="delete-btn" (click)="deleteDocument(customer, 'customers')" icon="fas fa-trash"></button>
                             </ng-template>
                         </td>
                     </tr>
@@ -38,7 +38,7 @@
 </p-card>
 
 <p-dialog [header]="dialogTitle" [(visible)]="showDialog" [width]="500">
-    <app-modification [customer]="edittedCustomer" (saveModification)="saveModification($event)" (closeDialog)="showDialog = false"></app-modification>
+    <app-modification [customer]="editedDocument" (saveModification)="saveModification($event, 'customers')" (closeDialog)="showDialog = false"></app-modification>
 </p-dialog>
 
 <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" width="425"></p-confirmDialog>

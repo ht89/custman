@@ -5,7 +5,8 @@ import { Customer } from '../customers/customer.interface';
 import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 
 @Component({
-    selector: 'app-shared'
+    selector: 'app-shared',
+    template: ''
 })
 export class SharedComponent implements OnInit {
     collection: AngularFirestoreCollection<{}>;
@@ -20,8 +21,8 @@ export class SharedComponent implements OnInit {
     showDialog = false;
     dialogTitle = '';
 
-    constructor(private db: AngularFirestore,
-        private confirmationService: ConfirmationService) { }
+    constructor(public db: AngularFirestore,
+        public confirmationService: ConfirmationService) { }
 
     ngOnInit() {
     }
@@ -37,11 +38,11 @@ export class SharedComponent implements OnInit {
         }
     }
 
-    saveModification(document: any) {
+    saveModification(document: any, collectionType: string) {
         if (!document.id) {
             this.addDocument(document);
         } else {
-            this.editDocument(document);
+            this.editDocument(document, collectionType);
         }
 
         this.showDialog = false;
@@ -53,16 +54,16 @@ export class SharedComponent implements OnInit {
         this.collection.add(document);
     }
 
-    editDocument(document: any) {
-        this.document = this.db.doc<Customer>(`customers/${document.id}`);
+    editDocument(document: any, collectionType: string) {
+        this.document = this.db.doc<Customer>(`${collectionType}/${document.id}`);
         this.document.update(document);
     }
 
-    deleteCustomer(document: any) {
+    deleteDocument(document: any, collectionType: string) {
         this.confirmationService.confirm({
             message: `Are you sure you want to delete ${document.name} ?`,
             accept: () => {
-                this.document = this.db.doc<Customer>(`customers/${document.id}`);
+                this.document = this.db.doc<Customer>(`${collectionType}/${document.id}`);
                 this.document.delete();
             }
         });
