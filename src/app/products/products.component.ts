@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestoreCollection, AngularFirestoreDocument, AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore } from 'angularfire2/firestore';
 import { Product } from './product.interface';
-import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/operators';
-import { ProductId } from './product-id.interface';
 import { SharedComponent } from '../shared/shared.component';
 import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 

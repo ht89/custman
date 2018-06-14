@@ -1,10 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/internal/Observable';
+import { AngularFirestore } from 'angularfire2/firestore';
 import { Customer } from './customer.interface';
-import { ModificationComponent } from './modification/modification.component';
 import { map } from 'rxjs/operators';
-import { CustomerId } from './customer-id.interface';
 import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 import { SharedComponent } from '../shared/shared.component';
 

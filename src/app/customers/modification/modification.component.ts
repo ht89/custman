@@ -1,6 +1,6 @@
-import { Component, OnInit, Inject, Output, EventEmitter, Input, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { Customer } from '../customer.interface';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomerId } from '../customer-id.interface';
 
 @Component({
