@@ -1,0 +1,16 @@
+<div  class="modification ui-g">
+    <form [formGroup]="modForm" novalidate (ngSubmit)="save(modForm.value, modForm.valid)">
+        <div class="ui-fluid">
+            <div class="ui-g-12">
+                <div *ngFor="let question of questions" class="ui-g-6 input">
+                    <app-dynamic-form-question [question]="question" [form]="modForm"></app-dynamic-form-question>
+                </div>
+            </div>
+        </div>
+
+        <div class="btns">
+            <button pButton type="button" class="btns__cancel ui-button-secondary" label="Cancel" (click)="closeDialog.emit()"></button>
+            <button pButton type="button" class="btns__submit" label="Submit" [disabled]="!modForm.valid" type="submit"></button>
+        </div>
+    </form>
+</div>

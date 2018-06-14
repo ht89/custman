@@ -4,6 +4,8 @@ import { Customer } from './customer.interface';
 import { map } from 'rxjs/operators';
 import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 import { SharedComponent } from '../shared/shared.component';
+import { QuestionBase } from '../shared/dynamic-form/control/question-base';
+import { TextboxQuestion } from '../shared/dynamic-form/control/question-textbox';
 
 @Component({
     selector: 'app-customers',
@@ -12,6 +14,7 @@ import { SharedComponent } from '../shared/shared.component';
     encapsulation: ViewEncapsulation.None
 })
 export class CustomersComponent extends SharedComponent implements OnInit {
+    questions: QuestionBase<any>[];
 
     constructor(public db: AngularFirestore,
         public confirmationService: ConfirmationService) {
@@ -33,6 +36,29 @@ export class CustomersComponent extends SharedComponent implements OnInit {
             { field: 'phoneNum', header: 'Phone Number' },
             { field: 'address', header: 'Address' },
             { field: 'modification', header: 'Edit / Delete' }
+        ];
+
+        this.questions = [
+            new TextboxQuestion({
+                key: 'name',
+                label: 'Name',
+                value: '',
+                required: true,
+            }),
+
+            new TextboxQuestion({
+                key: 'phoneNum',
+                label: 'Phone number',
+                value: '',
+                required: true,
+            }),
+
+            new TextboxQuestion({
+                key: 'address',
+                label: 'Address',
+                value: '',
+                required: true,
+            }),
         ];
     }
 }
