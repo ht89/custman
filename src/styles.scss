@@ -18,4 +18,11 @@ body {
 
 .table-search {
     float: right;
+    position: relative;
+    i {
+        position: absolute;
+        left: -25px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
 }
