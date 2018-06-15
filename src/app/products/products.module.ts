@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ModificationModule } from '../shared/modification/modification.module';
 
 @NgModule({
     imports: [
@@ -19,7 +20,8 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
         DialogModule,
         InputTextModule,
         ConfirmDialogModule,
-        CardModule
+        CardModule,
+        ModificationModule
     ],
     exports: [],
     declarations: [ProductsComponent],

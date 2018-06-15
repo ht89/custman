@@ -36,3 +36,9 @@
         </div>
     </div>
 </p-card>
+
+<p-dialog [header]="dialogTitle" [(visible)]="showDialog" [width]="500">
+    <app-modification [questions]="questions" (saveModification)="saveModification($event, 'products')" (closeDialog)="showDialog = false"></app-modification>
+</p-dialog>
+
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" width="425"></p-confirmDialog>

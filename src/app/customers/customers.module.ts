@@ -10,9 +10,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 import { CardModule } from 'primeng/card';
-import { ModificationComponent } from '../shared/modification/modification.component';
-import { DynamicFormQuestionComponent } from '../shared/dynamic-form/dynamic-form-question/dynamic-form-question.component';
 import { QuestionControlService } from '../shared/dynamic-form/control/question-control.service';
+import { ModificationModule } from '../shared/modification/modification.module';
 
 @NgModule({
     imports: [
@@ -23,11 +22,12 @@ import { QuestionControlService } from '../shared/dynamic-form/control/question-
         DialogModule,
         InputTextModule,
         ConfirmDialogModule,
-        CardModule
+        CardModule,
+        ModificationModule
     ],
     exports: [],
-    declarations: [CustomersComponent, ModificationComponent, DynamicFormQuestionComponent],
+    declarations: [CustomersComponent],
     providers: [ConfirmationService, QuestionControlService],
-    entryComponents: [ModificationComponent]
+    entryComponents: []
 })
 export class CustomersModule { }

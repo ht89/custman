@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
@@ -13,7 +13,6 @@ import { HeaderComponent } from './header/header.component';
 import { ROUTES } from './app.routes';
 import { CustomersModule } from './customers/customers.module';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { ProductsModule } from './products/products.module';
 import { SharedComponent } from './shared/shared.component';
 
