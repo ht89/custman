@@ -8,5 +8,5 @@
         <!-- define more elements here -->
     </div>
 
-    <small class="error-msg" [ngClass]="{ 'error-msg__show': isInvalid }">{{question.label}} is required</small>
+    <small class="error-msg" [ngClass]="{ 'error-msg__show': isInvalid }">{{question.validationMsg}}</small>
 </div>

@@ -6,6 +6,7 @@ import { ConfirmationService } from 'primeng/components/common/confirmationservi
 import { SharedComponent } from '../shared/shared.component';
 import { QuestionBase } from '../shared/dynamic-form/control/question-base';
 import { TextboxQuestion } from '../shared/dynamic-form/control/question-textbox';
+import { Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-customers',
@@ -43,21 +44,24 @@ export class CustomersComponent extends SharedComponent implements OnInit {
                 key: 'name',
                 label: 'Name',
                 value: '',
-                required: true,
+                validation: [Validators.pattern(/\D+/)],
+                validationMsg: 'Should not contain numbers'
             }),
 
             new TextboxQuestion({
                 key: 'phoneNum',
                 label: 'Phone number',
                 value: '',
-                required: true,
+                validation: [Validators.pattern(/\d+/)],
+                validationMsg: 'Should not contain words'
             }),
 
             new TextboxQuestion({
                 key: 'address',
                 label: 'Address',
                 value: '',
-                required: true,
+                validation: [Validators.pattern(/\D+/)],
+                validationMsg: 'Should not contain numbers'
             }),
         ];
     }
