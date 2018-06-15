@@ -39,6 +39,12 @@ export class ProductsComponent extends SharedComponent implements OnInit {
             { field: 'modification', header: 'Edit / Delete' }
         ];
 
+        this.sortFields = [
+            { label: 'Name', value: 'name' },
+            { label: 'Size', value: 'size' },
+            { label: 'Price', value: 'price' }
+        ];
+
         this.questions = [
             new TextboxQuestion({
                 key: 'id',

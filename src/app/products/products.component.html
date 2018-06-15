@@ -1,21 +1,27 @@
 <p-card title="Products">
-    <div class="products ui-g">
-        <div class="ui-g-12">
-            <button pButton type="button" label="Add product" (click)="openModificationDialog('Add product')"></button>
+    <button class="add-btn" pButton type="button" icon="fas fa-plus" (click)="openModificationDialog('Add product')"></button>
 
-            <div class="table-search ui-g-4 ui-g-nopad">
-                <i class="fa fa-search"></i>
-                <input class="ui-g-12" type="text" pInputText size="50" placeholder="Search here" (input)="dt.filterGlobal($event.target.value, 'contains')">
+    <div class="products ui-g ui-fluid">
+        <div class="ui-g-7">
+            <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon">
+                    <i class="fa fa-search"></i>
+                </span>
+
+                <input type="text" pInputText placeholder="Search here" (input)="dt.filterGlobal($event.target.value, 'contains')">
             </div>
         </div>
 
+        <div class="ui-g-5">
+            <p-dropdown [options]="sortFields" [(ngModel)]="sortField" placeholder="Sort by" (onChange)="onSortFieldChange('products')"></p-dropdown>
+        </div>
+
         <div class="ui-g-12">
-            <p-table #dt [columns]="tableCols" [value]="documents | async" sortMode="multiple">
+            <p-table #dt [columns]="tableCols" [value]="documents | async" [responsive]="true">
                 <ng-template pTemplate="header" let-columns>
                     <tr>
-                        <th *ngFor="let col of columns" [pSortableColumn]="col.field !== 'modification' && col.field">
+                        <th *ngFor="let col of columns">
                             {{col.header}}
-                            <p-sortIcon *ngIf="col.field !== 'modification'" [field]="col.field"></p-sortIcon>
                         </th>
                     </tr>
                 </ng-template>
@@ -23,6 +29,7 @@
                     <tr>
                         <td *ngFor="let col of columns">
                             <span *ngIf="col.field !== 'modification'; else modCell">
+                                <span class="ui-column-title">{{col.header}}</span>
                                 {{ product[col.field] }}
                             </span>
                             <ng-template #modCell>
@@ -37,8 +44,8 @@
     </div>
 </p-card>
 
-<p-dialog [header]="dialogTitle" [(visible)]="showDialog" [width]="500">
+<p-dialog [header]="dialogTitle" [(visible)]="showDialog" [width]="360">
     <app-modification [questions]="questions" (saveModification)="saveModification($event, 'products')" (closeDialog)="showDialog = false"></app-modification>
 </p-dialog>
 
-<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" width="425"></p-confirmDialog>
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" width="360"></p-confirmDialog>

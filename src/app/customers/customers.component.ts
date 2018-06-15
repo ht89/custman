@@ -96,16 +96,4 @@ export class CustomersComponent extends SharedComponent implements OnInit {
 
         super.openModificationDialog(dialogTitle);
     }
-
-    onSortFieldChange() {
-        console.log('sort field changed');
-        this.collection = this.db.collection('customers', ref => ref.orderBy(this.sortField));
-        this.documents = this.collection.snapshotChanges().pipe(
-            map(actions => actions.map(a => {
-                const data = a.payload.doc.data() as Customer;
-                const id = a.payload.doc.id;
-                return { id, ...data };
-            }))
-        );
-    }
 }
