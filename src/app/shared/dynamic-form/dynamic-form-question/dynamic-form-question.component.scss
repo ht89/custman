@@ -1,0 +1,7 @@
+.error-msg {
+    color: #cd0a0a;
+    visibility: hidden;
+    &__show {
+        visibility: visible;
+    }
+}

@@ -2,9 +2,11 @@
     <form [formGroup]="modForm" novalidate (ngSubmit)="save(modForm.value, modForm.valid)">
         <div class="ui-fluid">
             <div class="ui-g-12">
-                <div *ngFor="let question of questions" class="ui-g-6 input">
-                    <app-dynamic-form-question [question]="question" [form]="modForm"></app-dynamic-form-question>
-                </div>
+                <ng-template ngFor let-question [ngForOf]="questions" let-i="index">
+                    <div class="input" [ngClass]="{ 'ui-g-6': i !== 2, 'ui-g-12': i === 2 }">
+                        <app-dynamic-form-question [question]="question" [form]="modForm"></app-dynamic-form-question>
+                    </div>
+                </ng-template>
             </div>
         </div>
 

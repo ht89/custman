@@ -8,5 +8,5 @@
         <!-- define more elements here -->
     </div>
 
-    <div *ngIf="isInvalid" class="errorMessage">{{question.label}} is required</div>
+    <small class="error-msg" [ngClass]="{ 'error-msg__show': isInvalid }">{{question.label}} is required</small>
 </div>
