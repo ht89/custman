@@ -43,7 +43,7 @@
     </div>
 </p-card>
 
-<p-dialog [header]="dialogTitle" [(visible)]="showDialog" [width]="500">
+<p-dialog [header]="dialogTitle" [(visible)]="showDialog" [width]="360">
     <app-modification [questions]="questions" (saveModification)="saveModification($event, 'customers')" (closeDialog)="showDialog = false"></app-modification>
 </p-dialog>
 

@@ -2,8 +2,8 @@
     <form [formGroup]="modForm" novalidate (ngSubmit)="save(modForm.value, modForm.valid)">
         <div class="ui-fluid">
             <div class="ui-g-12">
-                <ng-template ngFor let-question [ngForOf]="questions" let-i="index">
-                    <div *ngIf="!question.hidden" class="input" [ngClass]="{ 'ui-g-6': i !== questions.length - 1, 'ui-g-12': i === questions.length - 1 }">
+                <ng-template ngFor let-question [ngForOf]="questions">
+                    <div *ngIf="!question.hidden" class="ui-g-12 input">
                         <app-dynamic-form-question [question]="question" [form]="modForm"></app-dynamic-form-question>
                     </div>
                 </ng-template>
