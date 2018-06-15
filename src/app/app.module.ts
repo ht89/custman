@@ -15,13 +15,14 @@ import { CustomersModule } from './customers/customers.module';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { ProductsModule } from './products/products.module';
 import { SharedComponent } from './shared/shared.component';
+import { OrdersModule } from './orders/orders.module';
 
 
 @NgModule({
     declarations: [
         AppComponent,
         HeaderComponent,
-        SharedComponent
+        SharedComponent,
     ],
     imports: [
         BrowserModule,
@@ -32,7 +33,8 @@ import { SharedComponent } from './shared/shared.component';
         AngularFireAuthModule,
         // AngularFireStorageModule // for storage features
         CustomersModule,
-        ProductsModule
+        ProductsModule,
+        OrdersModule
     ],
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy }
