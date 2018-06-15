@@ -3,6 +3,7 @@ import { AngularFirestoreCollection, AngularFirestoreDocument, AngularFirestore 
 import { Observable } from 'rxjs/internal/Observable';
 import { Customer } from '../customers/customer.interface';
 import { ConfirmationService } from 'primeng/components/common/confirmationservice';
+import { SelectItem } from 'primeng/components/common/selectitem';
 
 @Component({
     selector: 'app-shared',
@@ -17,6 +18,9 @@ export class SharedComponent implements OnInit {
 
     showDialog = false;
     dialogTitle = '';
+
+    sortFields: SelectItem[] = [];
+    sortField = '';
 
     constructor(public db: AngularFirestore,
         public confirmationService: ConfirmationService) { }

@@ -41,6 +41,11 @@ export class CustomersComponent extends SharedComponent implements OnInit {
             { field: 'modification', header: 'Edit / Delete' }
         ];
 
+        this.sortFields = [
+            { label: 'Name', value: 'name' },
+            { label: 'Address', value: 'address' }
+        ];
+
         this.questions = [
             new TextboxQuestion({
                 key: 'id',
@@ -90,5 +95,17 @@ export class CustomersComponent extends SharedComponent implements OnInit {
         this.questions = [...this.questions];
 
         super.openModificationDialog(dialogTitle);
+    }
+
+    onSortFieldChange() {
+        console.log('sort field changed');
+        this.collection = this.db.collection('customers', ref => ref.orderBy(this.sortField));
+        this.documents = this.collection.snapshotChanges().pipe(
+            map(actions => actions.map(a => {
+                const data = a.payload.doc.data() as Customer;
+                const id = a.payload.doc.id;
+                return { id, ...data };
+            }))
+        );
     }
 }

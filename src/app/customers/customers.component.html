@@ -4,13 +4,17 @@
             <button pButton type="button" label="Add customer" (click)="openModificationDialog('Add customer')"></button>
         </div>
 
-        <div class="ui-g-12">
+        <div class="ui-g-7">
             <div class="ui-inputgroup">
                 <span class="ui-inputgroup-addon">
                     <i class="fa fa-search"></i>
                 </span>
                 <input type="text" pInputText placeholder="Search here" (input)="dt.filterGlobal($event.target.value, 'contains')">
             </div>
+        </div>
+
+        <div class="ui-g-5">
+            <p-dropdown [options]="sortFields" [(ngModel)]="sortField" placeholder="Sort by" (onChange)="onSortFieldChange()"></p-dropdown>
         </div>
 
         <div class="ui-g-12">

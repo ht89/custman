@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { CustomersComponent } from './customers.component';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
@@ -12,10 +12,12 @@ import { ConfirmationService } from 'primeng/components/common/confirmationservi
 import { CardModule } from 'primeng/card';
 import { QuestionControlService } from '../shared/dynamic-form/control/question-control.service';
 import { ModificationModule } from '../shared/modification/modification.module';
+import {DropdownModule} from 'primeng/dropdown';
 
 @NgModule({
     imports: [
         CommonModule,
+        FormsModule,
         ReactiveFormsModule,
         TableModule,
         ButtonModule,
@@ -23,7 +25,8 @@ import { ModificationModule } from '../shared/modification/modification.module';
         InputTextModule,
         ConfirmDialogModule,
         CardModule,
-        ModificationModule
+        ModificationModule,
+        DropdownModule
     ],
     exports: [],
     declarations: [CustomersComponent],
