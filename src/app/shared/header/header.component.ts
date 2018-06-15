@@ -8,12 +8,19 @@ import { Router } from '@angular/router';
     encapsulation: ViewEncapsulation.None
 })
 export class HeaderComponent implements OnInit {
-    showSideBar = false;
+    showSidebar = false;
 
     constructor(public router: Router) { }
 
     ngOnInit() {
-        console.log(this.router.url);
     }
 
+    goToMenuItem(route: string) {
+
+        this.router.navigateByUrl(route);
+
+        if (this.showSidebar) {
+            this.showSidebar = false;
+        }
+    }
 }
