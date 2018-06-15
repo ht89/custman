@@ -11,10 +11,7 @@ import { ConfirmationService } from 'primeng/components/common/confirmationservi
 export class SharedComponent implements OnInit {
     collection: AngularFirestoreCollection<{}>;
     document: AngularFirestoreDocument<{}>;
-
     documents: Observable<{}[]>;
-
-    editedDocument = {};
 
     tableCols: any[] = [];
 
@@ -27,13 +24,12 @@ export class SharedComponent implements OnInit {
     ngOnInit() {
     }
 
-    openModificationDialog(title: string, document?: any) {
+    openModificationDialog(title: string) {
         this.dialogTitle = title;
         this.showDialog = true;
     }
 
     saveModification(document: any, collectionType: string) {
-        console.log(document);
         if (!document.id) {
             this.addDocument(document);
         } else {

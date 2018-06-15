@@ -89,6 +89,6 @@ export class CustomersComponent extends SharedComponent implements OnInit {
 
         this.questions = [...this.questions];
 
-        super.openModificationDialog(dialogTitle, document);
+        super.openModificationDialog(dialogTitle);
     }
 }
