@@ -1,21 +1,24 @@
 <p-card title="Customers">
-    <div class="customers ui-g">
+    <div class="customers ui-g ui-fluid">
         <div class="ui-g-12">
             <button pButton type="button" label="Add customer" (click)="openModificationDialog('Add customer')"></button>
+        </div>
 
-            <div class="table-search ui-g-4 ui-g-nopad">
-                <i class="fa fa-search"></i>
-                <input class="ui-g-12" type="text" pInputText size="50" placeholder="Search here" (input)="dt.filterGlobal($event.target.value, 'contains')">
+        <div class="ui-g-12">
+            <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon">
+                    <i class="fa fa-search"></i>
+                </span>
+                <input type="text" pInputText placeholder="Search here" (input)="dt.filterGlobal($event.target.value, 'contains')">
             </div>
         </div>
 
         <div class="ui-g-12">
-            <p-table #dt [columns]="tableCols" [value]="documents | async" sortMode="multiple">
+            <p-table #dt [columns]="tableCols" [value]="documents | async" [responsive]="true">
                 <ng-template pTemplate="header" let-columns>
                     <tr>
-                        <th *ngFor="let col of columns" [pSortableColumn]="col.field !== 'phoneNum' && col.field !== 'modification' && col.field">
+                        <th *ngFor="let col of columns">
                             {{col.header}}
-                            <p-sortIcon *ngIf="col.field !== 'phoneNum' && col.field !== 'modification'" [field]="col.field"></p-sortIcon>
                         </th>
                     </tr>
                 </ng-template>
@@ -23,6 +26,7 @@
                     <tr>
                         <td *ngFor="let col of columns">
                             <span *ngIf="col.field !== 'modification'; else modCell">
+                                <span class="ui-column-title">{{col.header}}</span>
                                 {{ customer[col.field] }}
                             </span>
                             <ng-template #modCell>

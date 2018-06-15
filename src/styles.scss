@@ -16,13 +16,9 @@ body {
     }
 }
 
-.table-search {
-    float: right;
-    position: relative;
-    i {
-        position: absolute;
-        left: -25px;
-        top: 50%;
-        transform: translateY(-50%);
+// fix issue where the button width equals the whole container width
+.ui-fluid {
+    .ui-button {
+        width: auto;
     }
 }

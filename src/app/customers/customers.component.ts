@@ -36,7 +36,7 @@ export class CustomersComponent extends SharedComponent implements OnInit {
 
         this.tableCols = [
             { field: 'name', header: 'Name' },
-            { field: 'phoneNum', header: 'Phone Number' },
+            { field: 'phoneNum', header: 'Phone' },
             { field: 'address', header: 'Address' },
             { field: 'modification', header: 'Edit / Delete' }
         ];
