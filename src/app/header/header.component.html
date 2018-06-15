@@ -1,9 +1,0 @@
-<div class="header">
-    <a [routerLink]="['/']" class="logo">My App</a>
-
-    <div class="header__left">
-        <a [ngClass]="{ 'active': router?.url === '/customers' }" [routerLink]="['/']">Customers</a>
-        <a [ngClass]="{ 'active': router?.url === '/products' }" [routerLink]="['/products']">Products</a>
-        <a [ngClass]="{ 'active': router?.url === '/orders' }" [routerLink]="['/orders']">Orders</a>
-    </div>
-</div>

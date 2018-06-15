@@ -1,0 +1,45 @@
+@import '../../../assets/_variables.scss';
+.header {
+    background-color: $primary-color;
+    padding: $space10 $space20;
+    display: flex;
+    align-items: center;
+    a {
+        display: block;
+        color: black;
+        text-align: center;
+        text-decoration: none;
+        font-size: $header-fontsize;
+        line-height: $line-height;
+        padding: $space10;
+        &.logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding-left: $space20;
+            color: white;
+        }
+        &.active {
+            color: deepskyblue;
+        }
+    }
+    &__sidebar-btn {
+        i {
+            color: white;
+            font-size: 1.875rem;
+        }
+    }
+    .ui-sidebar {
+        .menu-item {
+            border-bottom: 1px solid lightgray;
+            &__icon {
+                font-size: 1.25rem;
+            }
+            &__text {
+                padding-left: $space10;
+            }
+        }
+        &-close {
+            display: none;
+        }
+    }
+}
