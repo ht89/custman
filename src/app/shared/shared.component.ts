@@ -46,7 +46,7 @@ export class SharedComponent implements OnInit {
     }
 
     editDocument(document: any, collectionType: string) {
-        this.document = this.db.doc<Customer>(`${collectionType}/${document.id}`);
+        this.document = this.db.doc<{}>(`${collectionType}/${document.id}`);
         this.document.update(document);
     }
 
@@ -54,7 +54,7 @@ export class SharedComponent implements OnInit {
         this.confirmationService.confirm({
             message: `Are you sure you want to delete ${document.name} ?`,
             accept: () => {
-                this.document = this.db.doc<Customer>(`${collectionType}/${document.id}`);
+                this.document = this.db.doc<{}>(`${collectionType}/${document.id}`);
                 this.document.delete();
             }
         });
