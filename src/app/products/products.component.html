@@ -19,11 +19,11 @@
                         </th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-customer let-columns="columns">
+                <ng-template pTemplate="body" let-product let-columns="columns">
                     <tr>
                         <td *ngFor="let col of columns">
                             <span *ngIf="col.field !== 'modification'; else modCell">
-                                {{ customer[col.field] }}
+                                {{ product[col.field] }}
                             </span>
                             <ng-template #modCell>
                                 <button pButton type="button" class="edit-btn" (click)="openModificationDialog('Edit product', product)" icon="fas fa-edit"></button>
