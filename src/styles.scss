@@ -37,7 +37,7 @@ body {
         position: absolute;
         top: $space15;
         right: $space15;
-        &-icon-left {
+        .ui-button-icon-left {
             font-size: 1.25rem;
         }
     }
