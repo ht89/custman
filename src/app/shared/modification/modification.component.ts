@@ -24,7 +24,6 @@ export class ModificationComponent implements OnInit, OnChanges {
     ngOnChanges(changes: SimpleChanges) {
         if (changes['questions']) {
             this.modForm = this.qcs.toFormGroup(this.questions);
-
         }
     }
 

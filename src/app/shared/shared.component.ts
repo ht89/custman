@@ -30,15 +30,10 @@ export class SharedComponent implements OnInit {
     openModificationDialog(title: string, document?: any) {
         this.dialogTitle = title;
         this.showDialog = true;
-
-        if (document) {
-            this.editedDocument = document;
-        } else {
-            this.editedDocument = null;
-        }
     }
 
     saveModification(document: any, collectionType: string) {
+        console.log(document);
         if (!document.id) {
             this.addDocument(document);
         } else {

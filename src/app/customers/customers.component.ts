@@ -7,6 +7,8 @@ import { SharedComponent } from '../shared/shared.component';
 import { QuestionBase } from '../shared/dynamic-form/control/question-base';
 import { TextboxQuestion } from '../shared/dynamic-form/control/question-textbox';
 import { Validators } from '@angular/forms';
+import { CustomerId } from './customer-id.interface';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
     selector: 'app-customers',
@@ -41,6 +43,13 @@ export class CustomersComponent extends SharedComponent implements OnInit {
 
         this.questions = [
             new TextboxQuestion({
+                key: 'id',
+                label: 'ID',
+                value: '',
+                hidden: true
+            }),
+
+            new TextboxQuestion({
                 key: 'name',
                 label: 'Name',
                 value: '',
@@ -64,5 +73,22 @@ export class CustomersComponent extends SharedComponent implements OnInit {
                 validationMsg: 'Should not contain numbers'
             }),
         ];
+    }
+
+    openModificationDialog(dialogTitle: string, document?: CustomerId) {
+        if (document) {
+            this.questions[0].value = document.id;
+            this.questions[1].value = document.name;
+            this.questions[2].value = document.phoneNum;
+            this.questions[3].value = document.address;
+        } else {
+            this.questions[1].value = '';
+            this.questions[2].value = '';
+            this.questions[3].value = '';
+        }
+
+        this.questions = [...this.questions];
+
+        super.openModificationDialog(dialogTitle, document);
     }
 }

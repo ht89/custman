@@ -3,7 +3,7 @@
         <div class="ui-fluid">
             <div class="ui-g-12">
                 <ng-template ngFor let-question [ngForOf]="questions" let-i="index">
-                    <div class="input" [ngClass]="{ 'ui-g-6': i !== 2, 'ui-g-12': i === 2 }">
+                    <div *ngIf="!question.hidden" class="input" [ngClass]="{ 'ui-g-6': i !== questions.length - 1, 'ui-g-12': i === questions.length - 1 }">
                         <app-dynamic-form-question [question]="question" [form]="modForm"></app-dynamic-form-question>
                     </div>
                 </ng-template>
