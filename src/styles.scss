@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-@import '../src/assets/_variables.scss';
 
+@import '../src/assets/_variables.scss';
 body {
     margin: 0;
 }
@@ -21,4 +21,29 @@ body {
     .ui-button {
         width: auto;
     }
+}
+
+.ui-card {
+    &-body {
+        position: relative;
+    }
+}
+
+.add-btn {
+    &.ui-button {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        position: absolute;
+        top: $space15;
+        right: $space15;
+        &-icon-left {
+            font-size: 1.25rem;
+        }
+    }
+}
+
+.customers,
+.products {
+    margin-top: $space30;
 }

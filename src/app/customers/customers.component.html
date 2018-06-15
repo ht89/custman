@@ -1,9 +1,7 @@
 <p-card title="Customers">
-    <div class="customers ui-g ui-fluid">
-        <div class="ui-g-12">
-            <button pButton type="button" label="Add customer" (click)="openModificationDialog('Add customer')"></button>
-        </div>
+    <button class="add-btn" pButton type="button" icon="fas fa-plus" (click)="openModificationDialog('Add customer')"></button>
 
+    <div class="customers ui-g ui-fluid">
         <div class="ui-g-7">
             <div class="ui-inputgroup">
                 <span class="ui-inputgroup-addon">
