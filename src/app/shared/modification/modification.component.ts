@@ -4,30 +4,30 @@ import { QuestionBase } from '../../shared/dynamic-form/control/question-base';
 import { QuestionControlService } from '../../shared/dynamic-form/control/question-control.service';
 
 @Component({
-    selector: 'app-modification',
-    templateUrl: './modification.component.html',
-    styleUrls: ['./modification.component.scss']
+  selector: 'app-modification',
+  templateUrl: './modification.component.html',
+  styleUrls: ['./modification.component.scss']
 })
 export class ModificationComponent implements OnInit, OnChanges {
-    @Input() questions: QuestionBase<any>[] = [];
-    modForm: FormGroup;
+  @Input() questions: QuestionBase<any>[] = [];
+  modForm: FormGroup;
 
-    @Output() saveModification = new EventEmitter<any>();
+  @Output() saveModification = new EventEmitter<any>();
 
-    @Output() closeDialog = new EventEmitter<any>();
+  @Output() closeDialog = new EventEmitter<any>();
 
-    constructor(private qcs: QuestionControlService) { }
+  constructor(private qcs: QuestionControlService) { }
 
-    ngOnInit() {
+  ngOnInit() {
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['questions']) {
+      this.modForm = this.qcs.toFormGroup(this.questions);
     }
+  }
 
-    ngOnChanges(changes: SimpleChanges) {
-        if (changes['questions']) {
-            this.modForm = this.qcs.toFormGroup(this.questions);
-        }
-    }
-
-    save(model: any, isValid: boolean) {
-        this.saveModification.emit(model);
-    }
+  save(model: any, isValid: boolean) {
+    this.saveModification.emit(model);
+  }
 }

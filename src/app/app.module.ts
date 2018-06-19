@@ -16,33 +16,33 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { ProductsModule } from './products/products.module';
 import { SharedComponent } from './shared/shared.component';
 import { OrdersModule } from './orders/orders.module';
-import {SidebarModule} from 'primeng/sidebar';
+import { SidebarModule } from 'primeng/sidebar';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        HeaderComponent,
-        SharedComponent,
-    ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        RouterModule.forRoot(ROUTES),
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    SharedComponent,
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    RouterModule.forRoot(ROUTES),
 
-        AngularFireModule.initializeApp(environment.firebase),
-        AngularFirestoreModule, // for database features
-        AngularFireAuthModule,
-        // AngularFireStorageModule // for storage features
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule, // for database features
+    AngularFireAuthModule,
+    // AngularFireStorageModule // for storage features
 
-        CustomersModule,
-        ProductsModule,
-        OrdersModule,
+    CustomersModule,
+    ProductsModule,
+    OrdersModule,
 
-        SidebarModule
-    ],
-    providers: [
-        { provide: LocationStrategy, useClass: PathLocationStrategy }
-    ],
-    bootstrap: [AppComponent]
+    SidebarModule
+  ],
+  providers: [
+    { provide: LocationStrategy, useClass: PathLocationStrategy }
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

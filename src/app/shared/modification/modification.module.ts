@@ -8,14 +8,14 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        ButtonModule,
-        InputTextModule
-    ],
-    exports: [ModificationComponent],
-    declarations: [ModificationComponent, DynamicFormQuestionComponent],
-    providers: [],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    ButtonModule,
+    InputTextModule
+  ],
+  exports: [ModificationComponent],
+  declarations: [ModificationComponent, DynamicFormQuestionComponent],
+  providers: [],
 })
 export class ModificationModule { }

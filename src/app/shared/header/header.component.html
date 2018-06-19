@@ -1,21 +1,22 @@
 <div class="header">
-    <span class="header__sidebar-btn" (click)="showSidebar = !showSidebar">
-        <i class="fas fa-bars"></i>
-    </span>
+  <span class="header__sidebar-btn" (click)="showSidebar = !showSidebar">
+    <i class="fas fa-bars"></i>
+  </span>
 
-    <p-sidebar [(visible)]="showSidebar">
-        <a class="menu-item" [ngClass]="{ 'active': router?.url === '/customers' }" (click)="goToMenuItem('/')">
-            <i class="fas fa-users menu-item__icon"></i>
-            <span class="menu-item__text">Customers</span>
-        </a>
-        <a class="menu-item" [ngClass]="{ 'active': router?.url === '/products' }" (click)="goToMenuItem('/products')">
-            <i class="fas fa-birthday-cake menu-item__icon"></i>
-            <span class="menu-item__text">Products</span>
-        </a>
-        <a class="menu-item" [ngClass]="{ 'active': router?.url === '/orders' }" (click)="goToMenuItem('/orders')">
-            <i class="fas fa-shopping-cart menu-item__icon"></i>
-            <span class="menu-item__text">Orders</span></a>
-    </p-sidebar>
+  <p-sidebar [(visible)]="showSidebar">
+    <a class="menu-item" [ngClass]="{ 'active': router?.url === '/customers' }" (click)="goToMenuItem('/')">
+      <i class="fas fa-users menu-item__icon"></i>
+      <span class="menu-item__text">Customers</span>
+    </a>
+    <a class="menu-item" [ngClass]="{ 'active': router?.url === '/products' }" (click)="goToMenuItem('/products')">
+      <i class="fas fa-birthday-cake menu-item__icon"></i>
+      <span class="menu-item__text">Products</span>
+    </a>
+    <a class="menu-item" [ngClass]="{ 'active': router?.url === '/orders' }" (click)="goToMenuItem('/orders')">
+      <i class="fas fa-shopping-cart menu-item__icon"></i>
+      <span class="menu-item__text">Orders</span>
+    </a>
+  </p-sidebar>
 
-    <a [routerLink]="['/']" class="logo">My App</a>
+  <a [routerLink]="['/']" class="logo">My App</a>
 </div>

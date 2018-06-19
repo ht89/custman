@@ -13,21 +13,21 @@ import { ModificationModule } from '../shared/modification/modification.module';
 import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        TableModule,
-        ButtonModule,
-        DialogModule,
-        InputTextModule,
-        ConfirmDialogModule,
-        CardModule,
-        ModificationModule,
-        DropdownModule
-    ],
-    exports: [],
-    declarations: [ProductsComponent],
-    providers: [],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TableModule,
+    ButtonModule,
+    DialogModule,
+    InputTextModule,
+    ConfirmDialogModule,
+    CardModule,
+    ModificationModule,
+    DropdownModule
+  ],
+  exports: [],
+  declarations: [ProductsComponent],
+  providers: [],
 })
 export class ProductsModule { }

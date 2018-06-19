@@ -12,25 +12,25 @@ import { ConfirmationService } from 'primeng/components/common/confirmationservi
 import { CardModule } from 'primeng/card';
 import { QuestionControlService } from '../shared/dynamic-form/control/question-control.service';
 import { ModificationModule } from '../shared/modification/modification.module';
-import {DropdownModule} from 'primeng/dropdown';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        TableModule,
-        ButtonModule,
-        DialogModule,
-        InputTextModule,
-        ConfirmDialogModule,
-        CardModule,
-        ModificationModule,
-        DropdownModule
-    ],
-    exports: [],
-    declarations: [CustomersComponent],
-    providers: [ConfirmationService, QuestionControlService],
-    entryComponents: []
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TableModule,
+    ButtonModule,
+    DialogModule,
+    InputTextModule,
+    ConfirmDialogModule,
+    CardModule,
+    ModificationModule,
+    DropdownModule
+  ],
+  exports: [],
+  declarations: [CustomersComponent],
+  providers: [ConfirmationService, QuestionControlService],
+  entryComponents: []
 })
 export class CustomersModule { }

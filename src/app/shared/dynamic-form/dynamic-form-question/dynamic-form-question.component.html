@@ -1,12 +1,12 @@
 <div [formGroup]="form">
-    <div [ngSwitch]="question.controlType">
-        <span *ngSwitchCase="'textbox'" class="ui-float-label">
-            <input [id]="question.key" [type]="question.type" pInputText [formControlName]="question.key"/>
-            <label [attr.for]="question.key">{{ question.label }}</label>
-        </span>
+  <div [ngSwitch]="question.controlType">
+    <span *ngSwitchCase="'textbox'" class="ui-float-label">
+      <input [id]="question.key" [type]="question.type" pInputText [formControlName]="question.key" />
+      <label [attr.for]="question.key">{{ question.label }}</label>
+    </span>
 
-        <!-- define more elements here -->
-    </div>
+    <!-- define more elements here -->
+  </div>
 
-    <small class="error-msg" [ngClass]="{ 'error-msg__show': isInvalid }">{{question.validationMsg}}</small>
+  <small class="error-msg" [ngClass]="{ 'error-msg__show': isInvalid }">{{question.validationMsg}}</small>
 </div>
