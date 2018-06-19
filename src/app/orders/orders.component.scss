@@ -1,10 +1,32 @@
 @import '../../assets/_variables.scss';
-
 .orders {
   .title {
     margin-bottom: 0;
     &__icon {
       margin-right: $space5;
     }
+  }
+}
+
+.order {
+  .size {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    &__icon {
+      &--18 {
+        font-size: 1.125rem;
+      }
+      &--20 {
+        font-size: 1.5rem;
+      }
+      &--22 {
+        font-size: 1.875rem;
+      }
+    }
+  }
+  &__content-wrapper {
+    display: flex;
+    align-items: center;
   }
 }

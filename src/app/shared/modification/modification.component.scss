@@ -1,12 +1,12 @@
 @import '../../../assets/_variables.scss';
 .modification {
-    form {
-        .btns {
-            float: right;
-            padding-right: $space15;
-            &__cancel {
-                margin-right: $space5;
-            }
-        }
+  form {
+    .btns {
+      float: right;
+      padding-right: $space15;
+      &__cancel {
+        margin-right: $space5;
+      }
     }
+  }
 }
