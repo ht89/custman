@@ -29,8 +29,8 @@ body {
     height: 45px;
     border-radius: 50%;
     position: absolute;
-    top: $space15;
-    right: $space15;
+    top: 0;
+    right: 0;
     .ui-button-icon-left {
       font-size: 1.25rem;
     }
@@ -39,6 +39,7 @@ body {
 
 .customers,
 .products {
+  position: relative;
   &__sort {
     display: flex;
     justify-content: flex-end;

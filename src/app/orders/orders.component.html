@@ -1,55 +1,57 @@
-<h1>Create orders</h1>
+<div class="orders">
+  <h1>Create orders</h1>
 
-<div class="orders ui-g ui-fluid">
-  <h3 class="ui-g-12 title">
-    <i class="fas fa-user title__icon"></i>
-    <span class="title__text">Select customer</span>
-  </h3>
-
-  <div *ngIf="customers" class="ui-g-12">
-    <p-autoComplete [(ngModel)]="customer" [suggestions]="filteredCustomers" field="name" (completeMethod)="searchCustomer($event)"
-      [dropdown]="true" [minLength]="1" placeholder="Search here">
-      <ng-template let-filteredCustomer pTemplate="item">
-        {{ filteredCustomer.name }}
-      </ng-template>
-    </p-autoComplete>
-  </div>
-
-  <div *ngIf="customer?.id">
+  <div class="ui-g ui-fluid">
     <h3 class="ui-g-12 title">
-      <i class="fas fa-birthday-cake title__icon"></i>
-      <span class="title__text">Select product</span>
+      <i class="fas fa-user title__icon"></i>
+      <span class="title__text">Select customer</span>
     </h3>
 
-    <div *ngIf="products" class="ui-g-12">
-      <p-card>
-        <div class="ui-g order">
-          <div class="ui-g-12 order__category">Name</div>
-          <div class="ui-g-12 order__content">
-            <p-autoComplete [(ngModel)]="product" [suggestions]="filteredProducts" field="name" (completeMethod)="searchProduct($event)"
-              [dropdown]="true" [minLength]="1" placeholder="Search here">
-              <ng-template let-filteredProduct pTemplate="item">
-                {{ filteredProduct.name }}
-              </ng-template>
-            </p-autoComplete>
-          </div>
+    <div *ngIf="customers" class="ui-g-12">
+      <p-autoComplete [(ngModel)]="customer" [suggestions]="filteredCustomers" field="name" (completeMethod)="searchCustomer($event)"
+        [dropdown]="true" [minLength]="1" placeholder="Search here">
+        <ng-template let-filteredCustomer pTemplate="item">
+          {{ filteredCustomer.name }}
+        </ng-template>
+      </p-autoComplete>
+    </div>
 
-          <div class="ui-g-12 order__category">Size</div>
-          <div class="ui-g-12 order__content-wrapper">
-            <div *ngFor="let size of productSizes" class="ui-g-3 order__content size" [ngClass]="{'size--selected': selectedSize?.id === size.id}"
-              (click)="selectSize(size)">
-              <div *ngIf="size.name !== 'cup'; else cupImg" class="fas fa-circle size__icon" [ngClass]="{ 'size__icon--18': size.name === '18cm', 'size__icon--20': size.name === '20cm', 'size__icon--22': size.name === '22cm' }"></div>
+    <div *ngIf="customer?.id">
+      <h3 class="ui-g-12 title">
+        <i class="fas fa-birthday-cake title__icon"></i>
+        <span class="title__text">Select product</span>
+      </h3>
 
-              <ng-template #cupImg>
-                <img class="size__img" src="../../assets/images/{{ selectedSize?.id === size.id ? 'cupcake-white.png' : 'cupcake.png' }}"
-                  alt="Cupcake Img" height="30">
-              </ng-template>
+      <div *ngIf="products" class="ui-g-12">
+        <p-card>
+          <div class="ui-g order">
+            <div class="ui-g-12 order__category">Name</div>
+            <div class="ui-g-12 order__content">
+              <p-autoComplete [(ngModel)]="product" [suggestions]="filteredProducts" field="name" (completeMethod)="searchProduct($event)"
+                [dropdown]="true" [minLength]="1" placeholder="Search here">
+                <ng-template let-filteredProduct pTemplate="item">
+                  {{ filteredProduct.name }}
+                </ng-template>
+              </p-autoComplete>
+            </div>
 
-              <div class="size__text">{{size.name}}</div>
+            <div class="ui-g-12 order__category">Size</div>
+            <div class="ui-g-12 order__content-wrapper">
+              <div *ngFor="let size of productSizes" class="ui-g-3 order__content size" [ngClass]="{'size--selected': selectedSize?.id === size.id}"
+                (click)="selectSize(size)">
+                <div *ngIf="size.name !== 'cup'; else cupImg" class="fas fa-circle size__icon" [ngClass]="{ 'size__icon--18': size.name === '18cm', 'size__icon--20': size.name === '20cm', 'size__icon--22': size.name === '22cm' }"></div>
+
+                <ng-template #cupImg>
+                  <img class="size__img" src="../../assets/images/{{ selectedSize?.id === size.id ? 'cupcake-white.png' : 'cupcake.png' }}"
+                    alt="Cupcake Img" height="30">
+                </ng-template>
+
+                <div class="size__text">{{size.name}}</div>
+              </div>
             </div>
           </div>
-        </div>
-      </p-card>
+        </p-card>
+      </div>
     </div>
   </div>
 </div>
