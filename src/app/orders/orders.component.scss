@@ -1,7 +1,10 @@
 @import '../../assets/_variables.scss';
 
 .orders {
-  &__title {
+  .title {
     margin-bottom: 0;
+    &__icon {
+      margin-right: $space5;
+    }
   }
 }
