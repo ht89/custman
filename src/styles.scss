@@ -2,43 +2,51 @@
 
 @import '../src/assets/_variables.scss';
 body {
-    margin: 0;
+  margin: 0;
 }
 
 .ui-table {
-    .edit-btn {
-        margin-right: $space15;
+  .edit-btn {
+    margin-right: $space15;
+  }
+  &-tbody {
+    >tr td:nth-child(4) {
+      text-align: right;
     }
-    &-tbody {
-        >tr td:nth-child(4) {
-            text-align: right;
-        }
-    }
+  }
 }
 
 // fix issue where the button width equals the whole container width
 .ui-fluid {
-    .ui-button {
-        width: auto;
-    }
+  .ui-button {
+    width: auto;
+  }
 }
 
 .ui-card {
-    &-body {
-        position: relative;
-    }
+  &-body {
+    position: relative;
+  }
 }
 
 .add-btn {
-    &.ui-button {
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        position: absolute;
-        top: $space15;
-        right: $space15;
-        .ui-button-icon-left {
-            font-size: 1.25rem;
-        }
+  &.ui-button {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    position: absolute;
+    top: $space15;
+    right: $space15;
+    .ui-button-icon-left {
+      font-size: 1.25rem;
     }
+  }
+}
+
+.customers,
+.products {
+  &__sort {
+    display: flex;
+    justify-content: flex-end;
+  }
 }
