@@ -99,8 +99,8 @@ export class OrdersComponent implements OnInit {
 
   }
 
-  addOrder() {
-
+  selectSize(size: ProductSizeId) {
+    this.selectedSize = size;
+    console.log(size);
   }
-
 }
