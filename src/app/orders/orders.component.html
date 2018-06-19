@@ -1,3 +1,13 @@
 <p-card title="Create orders">
-
+  <div class="orders ui-g ui-fluid">
+    <h3 class="ui-g-12 orders__title">Select customer</h3>
+    <div class="ui-g-12">
+      <p-autoComplete [(ngModel)]="customerId" [suggestions]="filteredCustomers" field="name" (completeMethod)="searchCustomer($event)"
+        [dropdown]="true" [minLength]="1">
+        <ng-template let-filteredCustomer pTemplate="item">
+          {{ filteredCustomer.name }}
+        </ng-template>
+      </p-autoComplete>
+    </div>
+  </div>
 </p-card>
