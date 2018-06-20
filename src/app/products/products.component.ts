@@ -80,7 +80,7 @@ export class ProductsComponent extends SharedComponent implements OnInit {
           .subscribe(products => {
             this.products = products;
 
-            const productNames = this.products.map(product => product.name);
+            const productNames = Array.from(new Set(this.products.map(product => product.name)));
 
             const options = [];
 
