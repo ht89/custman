@@ -16,14 +16,18 @@ export class ModificationComponent implements OnInit, OnChanges {
 
   @Output() closeDialog = new EventEmitter<any>();
 
+  isLoading = true;
+
   constructor(private qcs: QuestionControlService) { }
 
   ngOnInit() {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['questions']) {
+    if (changes['questions'] && this.questions) {
       this.modForm = this.qcs.toFormGroup(this.questions);
+
+      this.isLoading = false;
     }
   }
 

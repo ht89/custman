@@ -1,8 +1,9 @@
 import { QuestionBase } from './question-base';
+import { SelectItem } from 'primeng/components/common/selectitem';
 
 export class DropdownQuestion extends QuestionBase<string> {
   controlType = 'dropdown';
-  options: { key: string, value: string }[] = [];
+  options: SelectItem[] = [];
 
   constructor(options: {} = {}) {
     super(options);

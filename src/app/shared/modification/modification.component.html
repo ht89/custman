@@ -1,4 +1,4 @@
-<div class="modification ui-g">
+<div *ngIf="!isLoading" class="modification ui-g">
   <form [formGroup]="modForm" novalidate (ngSubmit)="save(modForm.value, modForm.valid)">
     <div class="ui-fluid">
       <div class="ui-g-12">

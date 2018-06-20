@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Product } from './product.interface';
 import { map } from 'rxjs/operators';
 import { SharedComponent } from '../shared/shared.component';
@@ -8,6 +8,9 @@ import { QuestionBase } from '../shared/dynamic-form/control/question-base';
 import { TextboxQuestion } from '../shared/dynamic-form/control/question-textbox';
 import { Validators } from '@angular/forms';
 import { ProductId } from './product-id.interface';
+import { DropdownQuestion } from '../shared/dynamic-form/control/question-dropdown';
+import { ProductSize } from '../orders/product-size.interface';
+import { ProductSizeId } from '../orders/product-size-id.interface';
 
 @Component({
   selector: 'app-products',
@@ -16,6 +19,9 @@ import { ProductId } from './product-id.interface';
 })
 export class ProductsComponent extends SharedComponent implements OnInit {
   questions: QuestionBase<any>[];
+
+  private productSizeCollection: AngularFirestoreCollection<ProductSize>;
+  productSizes: ProductSizeId[];
 
   constructor(public db: AngularFirestore,
     public confirmationService: ConfirmationService) {
@@ -45,37 +51,58 @@ export class ProductsComponent extends SharedComponent implements OnInit {
       { label: 'Price', value: 'price' }
     ];
 
-    this.questions = [
-      new TextboxQuestion({
-        key: 'id',
-        label: 'ID',
-        value: '',
-        hidden: true
-      }),
+    this.productSizeCollection = this.db.collection<ProductSize>('product-sizes', ref => ref.orderBy('name'));
+    this.productSizeCollection.snapshotChanges()
+      .pipe(
+        map(actions => actions.map(a => {
+          const data = a.payload.doc.data() as ProductSize;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        }))
+      )
+      .subscribe(productSizes => {
+        this.productSizes = productSizes;
+        console.log(this.productSizes);
 
-      new TextboxQuestion({
-        key: 'name',
-        label: 'Name',
-        value: '',
-        validation: [Validators.pattern(/\D+/)],
-        validationMsg: 'Should not contain numbers'
-      }),
+        const options = [];
 
-      new TextboxQuestion({
-        key: 'size',
-        label: 'Size',
-        value: '',
-        validation: [Validators.required],
-      }),
+        this.productSizes.forEach(productSize => {
+          options.push({
+            label: productSize.name,
+            value: productSize.name
+          });
+        });
 
-      new TextboxQuestion({
-        key: 'price',
-        label: 'Price',
-        value: '',
-        validation: [Validators.pattern(/\d+/)],
-        validationMsg: 'Should not contain words'
-      }),
-    ];
+        this.questions = [
+          new TextboxQuestion({
+            key: 'id',
+            label: 'ID',
+            value: '',
+            hidden: true,
+          }),
+
+          new TextboxQuestion({
+            key: 'name',
+            label: 'Name',
+            value: '',
+            validation: [Validators.pattern(/\D+/)],
+            validationMsg: 'Should not contain numbers',
+          }),
+
+          new DropdownQuestion({
+            key: 'size',
+            options: options,
+          }),
+
+          new TextboxQuestion({
+            key: 'price',
+            label: 'Price',
+            value: '',
+            validation: [Validators.pattern(/\d+/)],
+            validationMsg: 'Should not contain words',
+          }),
+        ];
+      });
   }
 
   openModificationDialog(dialogTitle: string, document?: ProductId) {
