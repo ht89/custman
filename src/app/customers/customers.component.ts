@@ -56,24 +56,24 @@ export class CustomersComponent extends SharedComponent implements OnInit {
         key: 'name',
         label: 'Name',
         value: '',
-        validation: [Validators.pattern(/\D+/)],
-        validationMsg: 'Should not contain numbers'
+        validation: [Validators.required, Validators.pattern(/\D+/)],
+        validationMsg: 'Require words'
       }),
 
       new TextboxQuestion({
         key: 'phoneNum',
         label: 'Phone number',
         value: '',
-        validation: [Validators.pattern(/\d+/)],
-        validationMsg: 'Should not contain words'
+        validation: [Validators.required, Validators.pattern(/\d+/)],
+        validationMsg: 'Require numbers'
       }),
 
       new TextboxQuestion({
         key: 'address',
         label: 'Address',
         value: '',
-        validation: [Validators.pattern(/\D+/)],
-        validationMsg: 'Should not contain numbers'
+        validation: [Validators.required, Validators.pattern(/\D+/)],
+        validationMsg: 'Require words'
       }),
     ];
   }
