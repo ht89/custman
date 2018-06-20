@@ -11,7 +11,7 @@
     </span>
 
     <span *ngSwitchCase="'autocomplete'">
-      <p-autoComplete [formControlName]="question.key" [suggestions]="question.suggestions" (completeMethod)="question.search($event)" [dropdown]="true" field="name" [minLength]="1" placeholder="Search here"></p-autoComplete>
+      <p-autoComplete [formControlName]="question.key" [suggestions]="question.suggestions" (completeMethod)="question.search($event)" [dropdown]="true" [minLength]="1" placeholder="Search here"></p-autoComplete>
     </span>
   </div>
 

@@ -80,6 +80,8 @@ export class ProductsComponent extends SharedComponent implements OnInit {
           .subscribe(products => {
             this.products = products;
 
+            const productNames = this.products.map(product => product.name);
+
             const options = [];
 
             this.productSizes.forEach(productSize => {
@@ -101,7 +103,7 @@ export class ProductsComponent extends SharedComponent implements OnInit {
                 key: 'name',
                 label: 'Name',
                 value: '',
-                list: this.products,
+                list: productNames,
                 searchField: 'name',
                 validation: [Validators.pattern(/\D+/)],
                 validationMsg: 'Should not contain numbers',
