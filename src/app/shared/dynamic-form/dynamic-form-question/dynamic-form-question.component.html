@@ -7,7 +7,7 @@
 
     <!-- define more elements here -->
     <span *ngSwitchCase="'dropdown'">
-      <p-dropdown [options]="question.options" [formControlName]="question.key" placeholder="Select a {{ question.key }}" [showClear]="true"></p-dropdown>
+      <p-dropdown [options]="question.options" [formControlName]="question.key" placeholder="Select a {{ question.key }}" [showClear]="true" [autoWidth]="false"></p-dropdown>
     </span>
 
     <span *ngSwitchCase="'autocomplete'">
