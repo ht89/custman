@@ -90,6 +90,7 @@ export class ProductsComponent extends SharedComponent implements OnInit {
 
           new DropdownQuestion({
             key: 'size',
+            label: 'Size',
             options: options,
             validation: [Validators.required]
           }),
