@@ -20,7 +20,7 @@ export class SharedComponent implements OnInit {
   dialogTitle = '';
 
   sortFields: SelectItem[] = [];
-  sortField = '';
+  sortField = 'name';
 
   constructor(public db: AngularFirestore,
     public confirmationService: ConfirmationService) { }

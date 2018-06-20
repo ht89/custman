@@ -33,7 +33,7 @@ export class ProductsComponent extends SharedComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.collection = this.db.collection<Product>('products');
+    this.collection = this.db.collection<Product>('products', ref => ref.orderBy(this.sortField));
     this.documents = this.collection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as Product;
