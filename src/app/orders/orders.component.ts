@@ -25,9 +25,10 @@ export class OrdersComponent implements OnInit {
   filteredProductNames: String[];
   productNames = [];
 
-  private productSizeCollection: AngularFirestoreCollection<ProductSize>;
-  productSizes: ProductSize[];
-  selectedSize: ProductSizeId;
+  productSizes = [];
+  selectedSize: string;
+
+  price = 0;
 
   constructor(private readonly afs: AngularFirestore) { }
 
@@ -62,19 +63,6 @@ export class OrdersComponent implements OnInit {
         this.productNames = Array.from(new Set(this.products.map(product => product.name)));
       });
 
-    this.productSizeCollection = this.afs.collection<ProductSize>('product-sizes', ref => ref.orderBy('name'));
-
-    this.productSizeCollection.snapshotChanges()
-      .pipe(
-        map(actions => actions.map(a => {
-          const data = a.payload.doc.data() as ProductSize;
-          const id = a.payload.doc.id;
-          return { id, ...data };
-        }))
-      )
-      .subscribe(productSizes => {
-        this.productSizes = productSizes;
-      });
   }
 
   searchCustomer(event) {
@@ -97,8 +85,27 @@ export class OrdersComponent implements OnInit {
 
   }
 
-  selectSize(size: ProductSizeId) {
-    this.selectedSize = size;
-    console.log(size);
+  onProductSelect(event) {
+    this.productSizes = [];
+    for (const product of this.products) {
+      if (product.name === this.product) {
+        this.productSizes.push(product.size);
+      }
+    }
+
+    this.productSizes.sort();
   }
+
+  selectSize(size: string) {
+    this.selectedSize = size;
+
+    for (const product of this.products) {
+      if (product.name === this.product && product.size === this.selectedSize) {
+        this.price = product.price;
+        break;
+      }
+    }
+  }
+
+  
 }
