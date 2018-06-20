@@ -91,6 +91,7 @@ export class ProductsComponent extends SharedComponent implements OnInit {
           new DropdownQuestion({
             key: 'size',
             options: options,
+            validation: [Validators.required]
           }),
 
           new TextboxQuestion({
