@@ -9,6 +9,10 @@
     <span *ngSwitchCase="'dropdown'">
       <p-dropdown [options]="question.options" [formControlName]="question.key" placeholder="Select a {{ question.key }}" [showClear]="true"></p-dropdown>
     </span>
+
+    <span *ngSwitchCase="'autocomplete'">
+      <p-autoComplete [formControlName]="question.key" [suggestions]="question.suggestions" (completeMethod)="question.search($event)" [dropdown]="true" field="name" [minLength]="1" placeholder="Search here"></p-autoComplete>
+    </span>
   </div>
 
   <small class="error-msg" [ngClass]="{ 'error-msg__show': isInvalid }">{{question.validationMsg}}</small>

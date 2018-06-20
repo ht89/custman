@@ -11,6 +11,7 @@ import { ProductId } from './product-id.interface';
 import { DropdownQuestion } from '../shared/dynamic-form/control/question-dropdown';
 import { ProductSize } from '../orders/product-size.interface';
 import { ProductSizeId } from '../orders/product-size-id.interface';
+import { AutocompleteQuestion } from '../shared/dynamic-form/control/question-autocomplete';
 
 @Component({
   selector: 'app-products',
@@ -22,6 +23,9 @@ export class ProductsComponent extends SharedComponent implements OnInit {
 
   private productSizeCollection: AngularFirestoreCollection<ProductSize>;
   productSizes: ProductSizeId[];
+
+  private productCollection: AngularFirestoreCollection<Product>;
+  products: ProductId[];
 
   constructor(public db: AngularFirestore,
     public confirmationService: ConfirmationService) {
@@ -52,6 +56,8 @@ export class ProductsComponent extends SharedComponent implements OnInit {
     ];
 
     this.productSizeCollection = this.db.collection<ProductSize>('product-sizes', ref => ref.orderBy('name'));
+    this.productCollection = this.db.collection<Product>('products', ref => ref.orderBy('name'));
+
     this.productSizeCollection.snapshotChanges()
       .pipe(
         map(actions => actions.map(a => {
@@ -63,46 +69,60 @@ export class ProductsComponent extends SharedComponent implements OnInit {
       .subscribe(productSizes => {
         this.productSizes = productSizes;
 
-        const options = [];
+        this.productCollection.snapshotChanges()
+          .pipe(
+            map(actions => actions.map(a => {
+              const data = a.payload.doc.data() as Product;
+              const id = a.payload.doc.id;
+              return { id, ...data };
+            }))
+          )
+          .subscribe(products => {
+            this.products = products;
 
-        this.productSizes.forEach(productSize => {
-          options.push({
-            label: productSize.name,
-            value: productSize.name
+            const options = [];
+
+            this.productSizes.forEach(productSize => {
+              options.push({
+                label: productSize.name,
+                value: productSize.name
+              });
+            });
+
+            this.questions = [
+              new TextboxQuestion({
+                key: 'id',
+                label: 'ID',
+                value: '',
+                hidden: true,
+              }),
+
+              new AutocompleteQuestion({
+                key: 'name',
+                label: 'Name',
+                value: '',
+                list: this.products,
+                searchField: 'name',
+                validation: [Validators.pattern(/\D+/)],
+                validationMsg: 'Should not contain numbers',
+              }),
+
+              new DropdownQuestion({
+                key: 'size',
+                label: 'Size',
+                options: options,
+                validation: [Validators.required]
+              }),
+
+              new TextboxQuestion({
+                key: 'price',
+                label: 'Price',
+                value: '',
+                validation: [Validators.pattern(/\d+/)],
+                validationMsg: 'Should not contain words',
+              }),
+            ];
           });
-        });
-
-        this.questions = [
-          new TextboxQuestion({
-            key: 'id',
-            label: 'ID',
-            value: '',
-            hidden: true,
-          }),
-
-          new TextboxQuestion({
-            key: 'name',
-            label: 'Name',
-            value: '',
-            validation: [Validators.pattern(/\D+/)],
-            validationMsg: 'Should not contain numbers',
-          }),
-
-          new DropdownQuestion({
-            key: 'size',
-            label: 'Size',
-            options: options,
-            validation: [Validators.required]
-          }),
-
-          new TextboxQuestion({
-            key: 'price',
-            label: 'Price',
-            value: '',
-            validation: [Validators.pattern(/\d+/)],
-            validationMsg: 'Should not contain words',
-          }),
-        ];
       });
   }
 

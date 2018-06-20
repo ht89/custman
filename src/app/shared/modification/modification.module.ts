@@ -7,6 +7,7 @@ import { DynamicFormQuestionComponent } from '../dynamic-form/dynamic-form-quest
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { DropdownModule } from 'primeng/dropdown';
     ReactiveFormsModule,
     ButtonModule,
     InputTextModule,
-    DropdownModule
+    DropdownModule,
+    AutoCompleteModule
   ],
   exports: [ModificationComponent],
   declarations: [ModificationComponent, DynamicFormQuestionComponent],
