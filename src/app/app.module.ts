@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -12,11 +12,14 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { HeaderComponent } from './shared/header/header.component';
 import { ROUTES } from './app.routes';
 import { CustomersModule } from './customers/customers.module';
-import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { LocationStrategy, PathLocationStrategy, registerLocaleData } from '@angular/common';
 import { ProductsModule } from './products/products.module';
 import { SharedComponent } from './shared/shared.component';
 import { OrdersModule } from './orders/orders.module';
 import { SidebarModule } from 'primeng/sidebar';
+
+import localeDe from '@angular/common/locales/de';
+registerLocaleData(localeDe, 'de');
 
 @NgModule({
   declarations: [
@@ -41,7 +44,8 @@ import { SidebarModule } from 'primeng/sidebar';
     SidebarModule
   ],
   providers: [
-    { provide: LocationStrategy, useClass: PathLocationStrategy }
+    { provide: LocationStrategy, useClass: PathLocationStrategy },
+    { provide: LOCALE_ID, useValue: 'de' }
   ],
   bootstrap: [AppComponent]
 })

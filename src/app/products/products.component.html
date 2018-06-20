@@ -32,7 +32,10 @@
             <td *ngFor="let col of columns">
               <span *ngIf="col.field !== 'modification'; else modCell">
                 <span class="ui-column-title">{{col.header}}</span>
-                {{ product[col.field] }}
+                <span *ngIf="col.field !== 'price'; else price">{{ product[col.field] }}</span>
+                <ng-template #price>
+                  <span>{{ product[col.field] | number }}</span>
+                </ng-template>
               </span>
               <ng-template #modCell>
                 <button pButton type="button" class="edit-btn" (click)="openModificationDialog('Edit product', product)" icon="fas fa-edit"></button>
