@@ -62,7 +62,6 @@ export class ProductsComponent extends SharedComponent implements OnInit {
       )
       .subscribe(productSizes => {
         this.productSizes = productSizes;
-        console.log(this.productSizes);
 
         const options = [];
 
