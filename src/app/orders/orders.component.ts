@@ -21,8 +21,9 @@ export class OrdersComponent implements OnInit {
 
   private productCollection: AngularFirestoreCollection<Product>;
   products: Product[];
-  filteredProducts: Product[];
-  product: ProductId;
+  product: string;
+  filteredProductNames: String[];
+  productNames = [];
 
   private productSizeCollection: AngularFirestoreCollection<ProductSize>;
   productSizes: ProductSize[];
@@ -57,6 +58,8 @@ export class OrdersComponent implements OnInit {
       )
       .subscribe(products => {
         this.products = products;
+
+        this.productNames = Array.from(new Set(this.products.map(product => product.name)));
       });
 
     this.productSizeCollection = this.afs.collection<ProductSize>('product-sizes', ref => ref.orderBy('name'));
@@ -75,8 +78,6 @@ export class OrdersComponent implements OnInit {
   }
 
   searchCustomer(event) {
-    console.log(event.query);
-
     this.filteredCustomers = [];
     for (let i = 0; i < this.customers.length; i++) {
       if (this.customers[i].name.toLowerCase().indexOf(event.query.toLowerCase()) === 0) {
@@ -87,12 +88,10 @@ export class OrdersComponent implements OnInit {
   }
 
   searchProduct(event) {
-    console.log(event.query);
-
-    this.filteredProducts = [];
-    for (let i = 0; i < this.products.length; i++) {
-      if (this.products[i].name.toLowerCase().indexOf(event.query.toLowerCase()) === 0) {
-        this.filteredProducts.push(this.products[i]);
+    this.filteredProductNames = [];
+    for (let i = 0; i < this.productNames.length; i++) {
+      if (this.productNames[i].toLowerCase().indexOf(event.query.toLowerCase()) === 0) {
+        this.filteredProductNames.push(this.productNames[i]);
       }
     }
 

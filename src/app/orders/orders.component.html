@@ -8,8 +8,8 @@
     </h3>
 
     <div *ngIf="customers" class="ui-g-12">
-      <p-autoComplete [(ngModel)]="customer" [suggestions]="filteredCustomers" field="name" (completeMethod)="searchCustomer($event)"
-        [dropdown]="true" [minLength]="1" placeholder="Search here">
+      <p-autoComplete [(ngModel)]="customer" [suggestions]="filteredCustomers" field="name" 
+        [dropdown]="true" [minLength]="1" placeholder="Search here" (completeMethod)="searchCustomer($event)">
         <ng-template let-filteredCustomer pTemplate="item">
           {{ filteredCustomer.name }}
         </ng-template>
@@ -27,11 +27,8 @@
           <div class="ui-g order">
             <div class="ui-g-12 order__category">Name</div>
             <div class="ui-g-12 order__content">
-              <p-autoComplete [(ngModel)]="product" [suggestions]="filteredProducts" field="name" (completeMethod)="searchProduct($event)"
+              <p-autoComplete [(ngModel)]="product" [suggestions]="filteredProductNames" (completeMethod)="searchProduct($event)"
                 [dropdown]="true" [minLength]="1" placeholder="Search here">
-                <ng-template let-filteredProduct pTemplate="item">
-                  {{ filteredProduct.name }}
-                </ng-template>
               </p-autoComplete>
             </div>
 
