@@ -39,7 +39,7 @@
             <div class="ui-g-12 order__content-wrapper">
               <div *ngFor="let size of productSizes" class="ui-g-3 order__content size" [ngClass]="{'size--selected': selectedSize?.id === size.id}"
                 (click)="selectSize(size)">
-                <div *ngIf="size.name !== 'cup'; else cupImg" class="fas fa-circle size__icon" [ngClass]="{ 'size__icon--18': size.name === '18cm', 'size__icon--20': size.name === '20cm', 'size__icon--22': size.name === '22cm' }"></div>
+                <div *ngIf="size.name !== 'cup'; else cupImg" class="fas fa-circle size__icon size__icon--{{ size.name.substring(0, 2) }}"></div>
 
                 <ng-template #cupImg>
                   <img class="size__img" src="../../assets/images/{{ selectedSize?.id === size.id ? 'cupcake-white.png' : 'cupcake.png' }}"
