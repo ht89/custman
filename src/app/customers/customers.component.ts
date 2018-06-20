@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Customer } from './customer.interface';
 import { map } from 'rxjs/operators';
@@ -12,8 +12,7 @@ import { CustomerId } from './customer-id.interface';
 @Component({
   selector: 'app-customers',
   templateUrl: './customers.component.html',
-  styleUrls: ['./customers.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./customers.component.scss']
 })
 export class CustomersComponent extends SharedComponent implements OnInit {
   questions: QuestionBase<any>[];

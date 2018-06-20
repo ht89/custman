@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from '../customers/customer.interface';
 import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/internal/Observable';
 import { CustomerId } from '../customers/customer-id.interface';
 import { map } from 'rxjs/operators';
 import { Product } from '../products/product.interface';
