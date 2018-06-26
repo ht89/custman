@@ -22,39 +22,37 @@
         <span class="title__text">Select product</span>
       </h3>
 
-      <div *ngIf="products" class="ui-g-12">
-        <p-card>
-          <div class="ui-g order">
-            <div class="ui-g-12 order__category">Name</div>
-            <div class="ui-g-12 order__content">
-              <p-autoComplete [(ngModel)]="product" [suggestions]="filteredProductNames" (completeMethod)="searchProduct($event)" [dropdown]="true"
-                [minLength]="1" placeholder="Search here" (onSelect)="onProductSelect($event)">
-              </p-autoComplete>
-            </div>
-
-            <ng-template [ngIf]="productSizes.length > 0">
-              <div class="ui-g-12 order__category">Size</div>
-              <div class="ui-g-12 order__content-wrapper">
-                <div *ngFor="let size of productSizes" class="ui-g-3 order__content size" [ngClass]="{'size--selected': selectedSize === size}"
-                  (click)="selectSize(size)">
-                  <div *ngIf="size !== 'cup'; else cupImg" class="fas fa-circle size__icon size__icon--{{ size.substring(0, 2) }}"></div>
-
-                  <ng-template #cupImg>
-                    <img class="size__img" src="../../assets/images/{{ selectedSize && selectedSize === size ? 'cupcake-white.png' : 'cupcake.png' }}"
-                      alt="Cupcake Img" height="30">
-                  </ng-template>
-
-                  <div class="size__text">{{size}}</div>
-                </div>
-              </div>
-            </ng-template>
-
-            <ng-template [ngIf]="price">
-              <div class="ui-g-3 order__category">Price</div>
-              <div class="ui-g-9 order__content-wrapper">{{ price }}</div>
-            </ng-template>
+      <div *ngIf="products" class="ui-g-12 ui-g-nopad">
+        <div class="ui-g order">
+          <div class="ui-g-12 order__category">Name</div>
+          <div class="ui-g-12 order__content">
+            <p-autoComplete [(ngModel)]="product" [suggestions]="filteredProductNames" (completeMethod)="searchProduct($event)" [dropdown]="true"
+              [minLength]="1" placeholder="Search here" (onSelect)="onProductSelect($event)">
+            </p-autoComplete>
           </div>
-        </p-card>
+
+          <ng-template [ngIf]="productSizes.length > 0">
+            <div class="ui-g-12 order__category">Size</div>
+            <div class="ui-g-12 order__content-wrapper">
+              <div *ngFor="let size of productSizes" class="ui-g-3 order__content size" [ngClass]="{'size--selected': selectedSize === size}"
+                (click)="selectSize(size)">
+                <div *ngIf="size !== 'cup'; else cupImg" class="fas fa-circle size__icon size__icon--{{ size.substring(0, 2) }}"></div>
+
+                <ng-template #cupImg>
+                  <img class="size__img" src="../../assets/images/{{ selectedSize && selectedSize === size ? 'cupcake-white.png' : 'cupcake.png' }}"
+                    alt="Cupcake Img" height="30">
+                </ng-template>
+
+                <div class="size__text">{{size}}</div>
+              </div>
+            </div>
+          </ng-template>
+
+          <ng-template [ngIf]="price">
+            <div class="ui-g-3 order__category">Price</div>
+            <div class="ui-g-9 order__content-wrapper">{{ price }}</div>
+          </ng-template>
+        </div>
       </div>
     </div>
   </div>
