@@ -29,7 +29,7 @@ registerLocaleData(localeDe, 'de');
     SharedComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     RouterModule.forRoot(ROUTES),
 
