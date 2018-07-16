@@ -11,10 +11,12 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ModificationModule } from '../shared/modification/modification.module';
 import { DropdownModule } from 'primeng/dropdown';
+import { productsRoutesModule } from './products.routes';
 
 @NgModule({
   imports: [
     CommonModule,
+    productsRoutesModule,
     FormsModule,
     ReactiveFormsModule,
     TableModule,

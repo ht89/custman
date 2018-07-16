@@ -13,10 +13,12 @@ import { CardModule } from 'primeng/card';
 import { QuestionControlService } from '../shared/dynamic-form/control/question-control.service';
 import { ModificationModule } from '../shared/modification/modification.module';
 import { DropdownModule } from 'primeng/dropdown';
+import { customersRoutesModule } from './customers.routes';
 
 @NgModule({
   imports: [
     CommonModule,
+    customersRoutesModule,
     FormsModule,
     ReactiveFormsModule,
     TableModule,
