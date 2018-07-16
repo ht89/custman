@@ -10,7 +10,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 // import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { HeaderComponent } from './shared/header/header.component';
-import { ROUTES } from './app.routes';
+import { routesModule } from './app.routes';
 import { CustomersModule } from './customers/customers.module';
 import { LocationStrategy, PathLocationStrategy, registerLocaleData } from '@angular/common';
 import { ProductsModule } from './products/products.module';
@@ -31,7 +31,7 @@ registerLocaleData(localeDe, 'de');
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
-    RouterModule.forRoot(ROUTES),
+    routesModule,
 
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // for database features

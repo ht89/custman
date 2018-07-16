@@ -1,9 +1,9 @@
-import { Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { CustomersModule } from './customers/customers.module';
 import { ProductsModule } from './products/products.module';
 import { OrdersModule } from './orders/orders.module';
 
-export const ROUTES: Routes = [
+export const routesModule = RouterModule.forRoot([
     {
         path: '',
         redirectTo: 'customers',
@@ -11,14 +11,14 @@ export const ROUTES: Routes = [
     },
     {
         path: 'customers',
-        loadChildren: () => CustomersModule
+        loadChildren: './customers/customers.module#CustomersModule'
     },
     {
         path: 'products',
-        loadChildren: () => ProductsModule
+        loadChildren: './products/products.module#ProductsModule'
     },
     {
         path: 'orders',
-        loadChildren: () => OrdersModule
+        loadChildren: './orders/orders.module#OrdersModule'
     }
-];
+]);
