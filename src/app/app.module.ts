@@ -38,10 +38,6 @@ registerLocaleData(localeDe, 'de');
     AngularFireAuthModule,
     // AngularFireStorageModule // for storage features
 
-    CustomersModule,
-    ProductsModule,
-    OrdersModule,
-
     SidebarModule,
 
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
