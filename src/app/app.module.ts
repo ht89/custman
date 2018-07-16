@@ -19,6 +19,7 @@ import { OrdersModule } from './orders/orders.module';
 import { SidebarModule } from 'primeng/sidebar';
 
 import localeDe from '@angular/common/locales/de';
+import { ServiceWorkerModule } from '@angular/service-worker';
 registerLocaleData(localeDe, 'de');
 
 @NgModule({
@@ -41,7 +42,9 @@ registerLocaleData(localeDe, 'de');
     ProductsModule,
     OrdersModule,
 
-    SidebarModule
+    SidebarModule,
+
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     { provide: LocationStrategy, useClass: PathLocationStrategy },
